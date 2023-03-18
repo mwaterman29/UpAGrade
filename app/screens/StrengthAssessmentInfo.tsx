@@ -4,6 +4,8 @@ import { Button, Text, View } from 'react-native';
 import { Link } from "expo-router";
 
 const StrengthAssessmentInfo = () => {
+
+    
     return(
         <ScreenLayout>
             <View className ='flex flex-col h-full justify-evenly items-center'>

@@ -7,10 +7,11 @@ import InjuryCard from './components/InjuryCard';
 export default function Injuries() {
 
 
+
     return (
         <View className="flex-1 h-full bg-ug-white">
             <ScrollView className="flex flex-col h-full py-5 mt-16 bg-ug-white">
-                <InjuryCard Title={'Arm'} />
+                <InjuryCard Title={'Arm'}/>
                 <InjuryCard Title={'Back'}/>
                 <InjuryCard Title={'Shoulder'}/>
                 <InjuryCard Title={'Wrist'}/>

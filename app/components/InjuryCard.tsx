@@ -13,9 +13,9 @@ function InjuryCard({Title}: Props) {
     const router = useRouter();
 
     return (
-        <View className='ug-black'>
-            <Pressable className="" onPress={() => router.replace('/climbs')}>
-                <Text >{Title}</Text>
+        <View className='w-auto mb-5 mx-2'>
+            <Pressable className="w-full rounded-full h-[100px] justify-center bg-ug-light-gray" onPress={() => router.push({pathname: '/subinjuries', params: {test: 'tester'}})}>
+                <Text className="text-center text-2xl font-bold">{Title}</Text>
             </Pressable>
         </View>
     );

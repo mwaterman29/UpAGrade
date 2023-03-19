@@ -7,7 +7,7 @@ export default function TrackClimbs() {
 
     return (
         <View className="flex-1 items-center justify-center bg-purple-100">
-            <Link className="rounded-full absolute bottom-10 right-10 text-white text-[20px] bg-black p-5 px-7" href="/addclimb">
+            <Link className="rounded-full absolute bottom-10 right-10 text-ug-white text-[20px] bg-ug-black p-5 px-7" href="/addclimb">
                 <Text>
                     +
                 </Text>

@@ -10,7 +10,8 @@ export default function Injuries() {
 
     return (
         <View className="flex-1 h-full bg-ug-white">
-            <ScrollView className="flex flex-col h-full py-5 mt-16 bg-ug-white">
+            <Text className='text-center text-4xl font-bold mt-16 mb-3'>Injuries</Text>
+            <ScrollView className="flex flex-col h-full py-5 bg-ug-white">
                 <InjuryCard Title={'Arm'}/>
                 <InjuryCard Title={'Back'}/>
                 <InjuryCard Title={'Shoulder'}/>

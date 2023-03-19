@@ -12,6 +12,11 @@ export default function App() {
           climbs
         </Text>
       </Link>
+      <Link href="/injuries">
+        <Text className='text-purple-500'>
+          injuries
+        </Text>
+      </Link>
       <StatusBar style="auto" />
     </View>
   );

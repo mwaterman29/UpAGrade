@@ -67,6 +67,15 @@ const StrengthAssessmentInput = () => {
         {label: '6:00', value: '10'}
       ]);
 
+
+    function getScoreLink() {
+        if(!valueFS || !valuePU || !valueCS || !valueMH)
+            return './StrengthAssessmentInput'; 
+        let score = (Number(valueFS) + Number(valuePU) + Number(valueCS) + Number(valueMH));
+        let resLink : string = `./StrengthAssessmentResults?score=` + score.toString();
+        return resLink;
+    }
+
     return(
         <ScreenLayout>
             <View className ='flex flex-col h-full justify-evenly items-center'>
@@ -121,7 +130,7 @@ const StrengthAssessmentInput = () => {
                     setItems={setItemsMH}
                     listMode="MODAL"
                 />
-                <Link href='./StrengthAssessmentResults'>
+                <Link href={getScoreLink()}>
                         <View className="bg-ug-dark-green m-2 p-4">
                             <Text className="text-ug-white text-xl text-center">
                                 Calculate my results!

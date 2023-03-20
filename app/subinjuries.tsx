@@ -2,11 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Key } from 'react';
 import { Text, View, ScrollView, FlatList, Button} from 'react-native';
 import { useLocalSearchParams, useRouter } from "expo-router";
-<<<<<<< Updated upstream
-=======
 import SubInjuryCard from './components/SubInjuryCard';
 import { PropertyName } from 'typescript';
->>>>>>> Stashed changes
 
 export default function SubInjuries() {
     const Params = useLocalSearchParams()
@@ -50,8 +47,9 @@ export default function SubInjuries() {
    
     //Renders the FlatList of sub-injuries for the specific sub-injury
     return (
-        <View className='mt-20'>
-            <FlatList data={Data} renderItem={ ({ item }) => <Button title={item.Title} onPress={() => router.replace(item.Url)}/>} keyExtractor={item => item.id}/>
+        <View className='flex-1 h-full bg-ug-white'>
+            <Text className='text-center text-4xl font-bold mt-16 mb-3'>Sub-injuries</Text>
+            <FlatList data={Data} renderItem={ ({ item }) => <SubInjuryCard Title={item.Title} Url={item.Url}/>} keyExtractor={item => item.id}/>
         </View>
     );
 }

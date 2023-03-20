@@ -3,8 +3,6 @@ import React from 'react';
 import { Text, View, Button, Pressable } from 'react-native';
 import { Link, useRouter } from "expo-router";
 
-
-
 type Props = {
     Title: string,
     Url: string,

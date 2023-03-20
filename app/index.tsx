@@ -7,7 +7,7 @@ export default function App() {
   return (
     <View className="flex-1 items-center justify-center bg-red-100">
       <Text>Open up App.js to start working on your app!</Text>
-      <Link href="https://www.google.com/">
+      <Link href="/climbs">
         <Text className='text-purple-500'>
           climbs
         </Text>

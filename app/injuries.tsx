@@ -5,9 +5,6 @@ import { Link } from "expo-router";
 import InjuryCard from './components/InjuryCard';
 
 export default function Injuries() {
-
-
-
     return (
         <View className="flex-1 h-full bg-ug-white">
             <Text className='text-center text-4xl font-bold mt-16 mb-3'>Injuries</Text>

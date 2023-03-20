@@ -3,16 +3,21 @@ import React from 'react';
 import { Text, View, ScrollView, FlatList, Button} from 'react-native';
 import { useLocalSearchParams, useRouter } from "expo-router";
 import SubInjuryCard from './components/SubInjuryCard';
+import { PropertyName } from 'typescript';
 
 export default function SubInjuries() {
     const Params = useLocalSearchParams()
     const router = useRouter()
 
+    interface SubInjuriesData {
+        [key: string]: { Title: string, Url: string, id: string }[];
+    }
 
-    const linksJSON: Object = 
+    const linksJSON: SubInjuriesData = 
     {
         'Arm': [
-            {Title: 'TestTitle', Url: "https://www.youtube.com/", id: 'first'}
+            {Title: 'TestTitle', Url: "https://www.youtube.com/", id: 'first'},
+            {Title: 'TestTitle2', Url: "https://www.youtube.com/", id: 'second2'}
         ],
         'Back': [
             {Title: 'TestTitle2', Url: "https://www.youtube.com/", id: 'second'}
@@ -35,10 +40,10 @@ export default function SubInjuries() {
     }
 
     //condenses the index
-    const index: String = Params.SubInjuries?.toString()!
+    const index: string = Params.SubInjuries?.toString()!
 
     //sets the array data for the FlatList
-    const Data: any = linksJSON[index as keyof Object]
+    const Data = linksJSON[index]
    
     //Renders the FlatList of sub-injuries for the specific sub-injury
     return (

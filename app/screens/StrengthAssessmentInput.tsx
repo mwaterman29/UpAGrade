@@ -71,8 +71,8 @@ const StrengthAssessmentInput = () => {
     function getScoreLink() {
         if(!valueFS || !valuePU || !valueCS || !valueMH)
             return './StrengthAssessmentInput'; 
-        let score = (Number(valueFS) + Number(valuePU) + Number(valueCS) + Number(valueMH));
-        let resLink : string = `./StrengthAssessmentResults?score=` + score.toString();
+        //let score = (Number(valueFS) + Number(valuePU) + Number(valueCS) + Number(valueMH));
+        let resLink : string = `./StrengthAssessmentResults?valueFS=` + valueFS + `&valuePU=` + valuePU + `&valueCS=` + valueCS + `&valueMH=` + valueMH;
         return resLink;
     }
 

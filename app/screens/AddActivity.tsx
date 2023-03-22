@@ -1,6 +1,6 @@
 import ScreenLayout from "../components/ScreenLayout";
-import React, {ReactNode, useState} from 'react';
-import { Button, Text, View, TextInput} from 'react-native';
+import React, {ReactNode, useState, useEffect} from 'react';
+import { Button, Text, View, TextInput, Keyboard} from 'react-native';
 import RadioGroup, {RadioButtonProps} from 'react-native-radio-buttons-group';
 import { Link } from "expo-router";
 
@@ -37,45 +37,73 @@ const AddActivity = () => {
     const [by, onChangeBy] = React.useState('');
     const [desc, onChangeDesc] = React.useState('');
 
+    const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+
+    useEffect(() => {
+       const keyboardDidShowListener = Keyboard.addListener(
+         'keyboardDidShow',
+         () => {
+           setKeyboardVisible(true); // or some other action
+         }
+       );
+       const keyboardDidHideListener = Keyboard.addListener(
+         'keyboardDidHide',
+         () => {
+           setKeyboardVisible(false); // or some other action
+         }
+       );
+   
+       return () => {
+         keyboardDidHideListener.remove();
+         keyboardDidShowListener.remove();
+       };
+     }, []);
+
     return(
         <ScreenLayout>
             <View className ='flex flex-col h-full justify-evenly items-center'>
                 <Text className="text-4xl text-ug-green underline decoration-double">
                     Add Activity
                 </Text>
-                <Text className="w-full text-2xl text-ug-light-green text-center">
-                    Pick Type
-                </Text>
                 
+                {!isKeyboardVisible &&(
+                <View className="w-full">
+                    <Text className="w-full text-2xl text-ug-light-green text-center">
+                    Pick Type
+                    </Text>
+
                 <View className="flex flex-row w-full">
-                    <View className="flex flex-col basis-4/5">
-                        <View className="flex-row items-center bg-ug-gray my-2 h-24 min-h-24 w-full">
-                            <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
-                            <Text className="flex basis-1/6 text-center items-center justify-center h-full">X</Text>
-                            <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
-                            <Text className="flex basis-1/2 bg-ug-light-blue text-center items-center justify-center h-full">Test Description</Text>
-                        </View>
-                        <View className="flex-row items-center bg-ug-gray my-2 h-24 min-h-24 w-full">
-                            <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
-                            <Text className="flex basis-1/6 text-center items-center justify-center h-full">X</Text>
-                            <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
-                            <Text className="flex basis-1/2 bg-ug-light-blue text-center items-center justify-center h-full">Test Description</Text>
-                        </View>
-                        <View className="flex-row items-center bg-ug-gray my-2 h-24 min-h-24 w-full">
-                            <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
-                            <Text className="flex basis-1/6 text-center items-center justify-center h-full">X</Text>
-                            <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
-                            <Text className="flex basis-1/2 bg-ug-light-blue text-center items-center justify-center h-full">Test Description</Text>
-                        </View>
+                <View className="flex flex-col basis-4/5">
+                    <View className="flex-row items-center bg-ug-gray my-2 h-24 min-h-24 w-full">
+                        <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
+                        <Text className="flex basis-1/6 text-center items-center justify-center h-full">X</Text>
+                        <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
+                        <Text className="flex basis-1/2 bg-ug-light-blue text-center items-center justify-center h-full">Test Description</Text>
                     </View>
-                    <View className="py-6 flex h-full basis-1/5">
-                        <RadioGroup 
-                            radioButtons={radioButtons} 
-                            onPress={onPressRadioButton} 
-                            containerStyle={{ justifyContent: 'space-between', height: 240}}
-                        />
+                    <View className="flex-row items-center bg-ug-gray my-2 h-24 min-h-24 w-full">
+                        <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
+                        <Text className="flex basis-1/6 text-center items-center justify-center h-full">X</Text>
+                        <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
+                        <Text className="flex basis-1/2 bg-ug-light-blue text-center items-center justify-center h-full">Test Description</Text>
+                    </View>
+                    <View className="flex-row items-center bg-ug-gray my-2 h-24 min-h-24 w-full">
+                        <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
+                        <Text className="flex basis-1/6 text-center items-center justify-center h-full">X</Text>
+                        <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
+                        <Text className="flex basis-1/2 bg-ug-light-blue text-center items-center justify-center h-full">Test Description</Text>
                     </View>
                 </View>
+                <View className="py-6 flex h-full basis-1/5">
+                    <RadioGroup 
+                        radioButtons={radioButtons} 
+                        onPress={onPressRadioButton} 
+                        containerStyle={{ justifyContent: 'space-between', height: 240}}
+                    />
+                </View>
+                </View>
+                </View>)}
+                
+                
                 <Text className="w-full text-2xl text-ug-light-green text-center">
                     Describe Activity
                 </Text>

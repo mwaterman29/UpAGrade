@@ -74,25 +74,25 @@ const AddActivity = () => {
 
                 <View className="flex flex-row w-full">
                 <View className="flex flex-col basis-4/5">
-                    <View className="flex-row items-center bg-ug-gray my-2 h-24 min-h-24 w-full">
+                    <View className="flex-row items-center bg-ug-gray my-2 h-14 min-h-14 w-full">
                         <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
                         <Text className="flex basis-1/6 text-center items-center justify-center h-full">X</Text>
                         <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
                         <Text className="flex basis-1/2 bg-ug-light-blue text-center items-center justify-center h-full">Test Description</Text>
                     </View>
-                    <View className="flex-row items-center bg-ug-gray my-2 h-24 min-h-24 w-full">
+                    <View className="flex-row items-center bg-ug-gray my-2 h-14 min-h-14 w-full">
                         <Text className="flex basis-1/4 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
                         <Text className="flex basis-3/4 bg-ug-light-blue text-center items-center justify-center h-full">Test Description</Text>
                     </View>
-                    <View className="flex-row items-center bg-ug-gray my-2 h-24 min-h-24 w-full">
+                    <View className="flex-row items-center bg-ug-gray my-2 h-14 min-h-14 w-full">
                         <Text className="flex w-full bg-ug-light-blue text-center items-center justify-center h-full">Test Description</Text>
                     </View>
                 </View>
-                <View className="py-6 flex h-full basis-1/5">
+                <View className="py-4 flex h-full basis-1/5">
                     <RadioGroup 
                         radioButtons={radioButtons} 
                         onPress={onPressRadioButton} 
-                        containerStyle={{ justifyContent: 'space-between', height: 240}}
+                        containerStyle={{ justifyContent: 'space-between', height: 160}}
                     />
                 </View>
                 </View>
@@ -106,19 +106,19 @@ const AddActivity = () => {
                     {radioButtons.find(rb => rb.value === '#X#D')?.selected && (
                     <View className="flex grow w-full bg-ug-gray">
                         <TextInput 
-                            className="flex w-full bg-ug-light-green text-center"
+                            className="flex w-full h-14 bg-ug-light-green text-center"
                             onChangeText={onChangeNum}
                             value={num}
                             placeholder="# of Reps"
                         />
                         <TextInput 
-                            className="flex w-full bg-ug-light-green text-center"
+                            className="flex w-full h-14 bg-ug-light-green text-center"
                             onChangeText={onChangeBy}
                             value={by}
                             placeholder="By ..."
                         />
                         <TextInput 
-                            className="flex w-full bg-ug-light-blue text-center"
+                            className="flex w-full h-14 bg-ug-light-blue text-center"
                             onChangeText={onChangeDesc}
                             value={desc}
                             placeholder="Description"
@@ -128,13 +128,13 @@ const AddActivity = () => {
                     {radioButtons.find(rb => rb.value === '#D')?.selected && (
                         <View className="flex grow w-full bg-ug-gray">
                         <TextInput 
-                            className="flex w-full bg-ug-light-green text-center"
+                            className="flex w-full h-14 bg-ug-light-green text-center"
                             onChangeText={onChangeNum}
                             value={num}
                             placeholder="# of Reps"
                         />
                         <TextInput 
-                            className="flex w-full bg-ug-light-blue text-center"
+                            className="flex w-full h-14 bg-ug-light-blue text-center"
                             onChangeText={onChangeDesc}
                             value={desc}
                             placeholder="Description"
@@ -144,7 +144,7 @@ const AddActivity = () => {
                     {radioButtons.find(rb => rb.value === 'D')?.selected && (
                         <View className="flex w-full bg-ug-gray">
                             <TextInput 
-                                className="flex w-full bg-ug-light-blue text-center"
+                                className="flex w-full h-14 bg-ug-light-blue text-center"
                                 onChangeText={onChangeDesc}
                                 value={desc}
                                 placeholder="Description"
@@ -152,6 +152,14 @@ const AddActivity = () => {
                         </View>
                     )}
                 </View>
+                {!isKeyboardVisible &&(
+                <Link href={""}>
+                        <View className="bg-ug-dark-green m-2 p-4">
+                            <Text className="text-ug-white text-xl text-center">
+                                Add to my Workout
+                            </Text>
+                        </View>
+                </Link>)}
             </View>
         </ScreenLayout>
     );

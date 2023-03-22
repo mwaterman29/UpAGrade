@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState } from 'react';
 import { Text, View, Button, Pressable } from 'react-native';
 import { Link, useRouter } from "expo-router";
 import storage from '../storage';
@@ -7,17 +7,20 @@ import storage from '../storage';
 type Props = {
     date: string,
     Grade: string,
-    climbid: string
+    climbid: string,
+    removedFunction: Function
 }
 
-function ClimbSquare({date, Grade, climbid}: Props) {
+function ClimbSquare({date, Grade, climbid, removedFunction}: Props) {
     const router = useRouter();
+
 
     function deleteClimb(){
         storage.remove({
             key: 'climbs',
             id: climbid
         });
+        removedFunction(true)
         console.log('removed')
     }
 

@@ -4,6 +4,10 @@ import { Text, View, Button, ScrollView } from 'react-native';
 import { Link, useSearchParams } from "expo-router";
 import storage from './storage'
 
+type climbNode = {
+    [key: string]: string
+}
+
 export default function ViewClimb() {
     const Params = useSearchParams()
     const [climbInfo, setClimbInfo] = useState({})
@@ -15,20 +19,19 @@ export default function ViewClimb() {
             key: 'climbs',
             id: climbID
         }).then(ret => {
-            console.log(ret);
             setClimbInfo(ret)
         })
     }, [])
     
-   
+   const climbInformation: climbNode = climbInfo
 
     return (
         <View className="flex-1 h-full bg-ug-white">
             <Text className='text-center text-4xl font-bold mt-16 mb-3'>View Climb</Text>
             <ScrollView>
-                <Text className="text-center text-2xl font-bold">{climbInfo.Date}</Text>
-                <Text className="text-center text-2xl font-bold">{climbInfo.Description}</Text> 
-                <Text className="text-center text-2xl font-bold">{climbInfo.Location}</Text> 
+                <Text className="text-center text-2xl font-bold">{climbInformation.Date}</Text>
+                <Text className="text-center text-2xl font-bold">{climbInformation.Description}</Text> 
+                <Text className="text-center text-2xl font-bold">{climbInformation.Location}</Text> 
             </ScrollView>
         </View>
     );

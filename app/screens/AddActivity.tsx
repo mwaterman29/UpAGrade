@@ -81,16 +81,11 @@ const AddActivity = () => {
                         <Text className="flex basis-1/2 bg-ug-light-blue text-center items-center justify-center h-full">Test Description</Text>
                     </View>
                     <View className="flex-row items-center bg-ug-gray my-2 h-24 min-h-24 w-full">
-                        <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
-                        <Text className="flex basis-1/6 text-center items-center justify-center h-full">X</Text>
-                        <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
-                        <Text className="flex basis-1/2 bg-ug-light-blue text-center items-center justify-center h-full">Test Description</Text>
+                        <Text className="flex basis-1/4 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
+                        <Text className="flex basis-3/4 bg-ug-light-blue text-center items-center justify-center h-full">Test Description</Text>
                     </View>
                     <View className="flex-row items-center bg-ug-gray my-2 h-24 min-h-24 w-full">
-                        <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
-                        <Text className="flex basis-1/6 text-center items-center justify-center h-full">X</Text>
-                        <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">#</Text>
-                        <Text className="flex basis-1/2 bg-ug-light-blue text-center items-center justify-center h-full">Test Description</Text>
+                        <Text className="flex w-full bg-ug-light-blue text-center items-center justify-center h-full">Test Description</Text>
                     </View>
                 </View>
                 <View className="py-6 flex h-full basis-1/5">
@@ -112,14 +107,14 @@ const AddActivity = () => {
                     <View className="flex grow w-full bg-ug-gray">
                         <TextInput 
                             className="flex w-full bg-ug-light-green text-center"
-                            onChangeText={onChangeDesc}
-                            value={desc}
+                            onChangeText={onChangeNum}
+                            value={num}
                             placeholder="# of Reps"
                         />
                         <TextInput 
                             className="flex w-full bg-ug-light-green text-center"
-                            onChangeText={onChangeDesc}
-                            value={desc}
+                            onChangeText={onChangeBy}
+                            value={by}
                             placeholder="By ..."
                         />
                         <TextInput 
@@ -131,8 +126,19 @@ const AddActivity = () => {
                     </View>
                     )}
                     {radioButtons.find(rb => rb.value === '#D')?.selected && (
-                        <View>
-                            <Text>Test option 2</Text>
+                        <View className="flex grow w-full bg-ug-gray">
+                        <TextInput 
+                            className="flex w-full bg-ug-light-green text-center"
+                            onChangeText={onChangeNum}
+                            value={num}
+                            placeholder="# of Reps"
+                        />
+                        <TextInput 
+                            className="flex w-full bg-ug-light-blue text-center"
+                            onChangeText={onChangeDesc}
+                            value={desc}
+                            placeholder="Description"
+                        />
                         </View>
                     )}
                     {radioButtons.find(rb => rb.value === 'D')?.selected && (

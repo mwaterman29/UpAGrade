@@ -13,7 +13,7 @@ export default function App() {
       <Link href="./screens/StrengthAssessmentInfo">
         <Text className='text-ug-green'>Strength Assessment</Text>
       </Link>
-      <Link href="./screens/AddActivity">
+      <Link href="./screens/AddWorkout">
         <Text className='text-ug-green'>Add Activity</Text>
       </Link>
       <WorkoutInput />

@@ -4,6 +4,19 @@ import { Button, Text, View, TextInput, Keyboard} from 'react-native';
 import RadioGroup, {RadioButtonProps} from 'react-native-radio-buttons-group';
 import { Link } from "expo-router";
 
+import uid from '.././uid';
+import storage from '.././storage';
+
+
+type Activity = {
+    type: Number,
+    num?: String,
+    by?: String,
+    desc: String,
+    completed: Boolean
+}
+
+export type {Activity};
 
 const AddActivity = () => {
 

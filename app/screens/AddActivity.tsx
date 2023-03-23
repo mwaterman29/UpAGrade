@@ -2,7 +2,7 @@ import ScreenLayout from "../components/ScreenLayout";
 import React, {ReactNode, useState, useEffect} from 'react';
 import { Button, Text, View, TextInput, Keyboard} from 'react-native';
 import RadioGroup, {RadioButtonProps} from 'react-native-radio-buttons-group';
-import { Link } from "expo-router";
+import { Link, useSearchParams, useRouter } from "expo-router";
 
 import uid from '.././uid';
 import storage from '.././storage';
@@ -20,6 +20,7 @@ export type {Activity};
 
 const AddActivity = () => {
 
+    //Radio buttons and options
     const [radioButtons, setRadioButtons] = useState<RadioButtonProps[]>([
         {
             id: '1', // acts as primary key, should be unique and non-empty string
@@ -50,8 +51,8 @@ const AddActivity = () => {
     const [by, onChangeBy] = React.useState('');
     const [desc, onChangeDesc] = React.useState('');
 
+    //Keyboard listening
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);
-
     useEffect(() => {
        const keyboardDidShowListener = Keyboard.addListener(
          'keyboardDidShow',
@@ -71,6 +72,25 @@ const AddActivity = () => {
          keyboardDidShowListener.remove();
        };
      }, []);
+
+    //Search params
+    const {givenDate} = useSearchParams();
+
+    function getWorkoutLink()
+    {
+        //Populate all the non-null search params to link back to the workout
+        let link = "./AddWorkout";
+        link += "?givenDate=" + givenDate;
+        let selButton = radioButtons.find(rb => rb.selected);
+        if(!selButton)
+            return link;
+        link += "&type=" + parseInt(selButton.id);
+        link += "&num=" + num;
+        link += "&by=" + by;
+        link += "&desc=" + desc;
+
+        return link;
+    }
 
     return(
         <ScreenLayout>
@@ -166,7 +186,7 @@ const AddActivity = () => {
                     )}
                 </View>
                 {!isKeyboardVisible &&(
-                <Link href={""}>
+                <Link href={getWorkoutLink()}>
                         <View className="bg-ug-dark-green m-2 p-4">
                             <Text className="text-ug-white text-xl text-center">
                                 Add to my Workout

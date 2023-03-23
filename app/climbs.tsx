@@ -8,10 +8,8 @@ import storage from './storage';
 
 export default function TrackClimbs() {
     /*
-        I want to load all of the data from the data base into objects and store them into a list.
-        Then I want to generate each item with an onpress listener that redirects you to the page to
-        generate the climb you added. I want to give each component an id that allows it to be quickly
-        accessed from the database when it's loaded
+        I want to sort all of the data first by last added then I want to organize by grade 
+        of the climb
     */
     const [climbData, setClimbData] = useState([])
     const [removed, setRemoved] = useState(false)
@@ -19,6 +17,7 @@ export default function TrackClimbs() {
     useEffect(() => {
         storage.getAllDataForKey('climbs')
         .then((climbsInfo: any) => {
+            climbsInfo.reverse()
             setClimbData(climbsInfo);
         }
     );}, [removed])

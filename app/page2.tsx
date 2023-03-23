@@ -6,7 +6,8 @@ export default function Page2() {
   return (
     <View className="flex-1 items-center justify-center bg-purple-100">
       <Text>hello i am a test page :D</Text>
-      <StatusBar style="auto" />
+      <Text>This is my own test</Text>
+      <StatusBar />
     </View>
   );
 }

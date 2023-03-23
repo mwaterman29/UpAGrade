@@ -40,7 +40,7 @@ export default function TrackClimbs() {
     function setUpObject(){
         const climbID = uid()
         const climbInfo = {Grade: valueGrade, Description: description, Location: location, Date: date, climbid: climbID}
-        console.log(climbInfo.Grade, climbInfo.Description, climbInfo.Location)
+        //console.log(climbInfo.Grade, climbInfo.Description, climbInfo.Location)
         storage.save({
             key: 'climbs',
             id: climbID,

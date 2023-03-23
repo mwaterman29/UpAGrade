@@ -20,8 +20,7 @@ function ClimbSquare({date, Grade, climbid, removedFunction}: Props) {
             key: 'climbs',
             id: climbid
         });
-        removedFunction(true)
-        console.log('removed')
+        removedFunction()
     }
 
     return (

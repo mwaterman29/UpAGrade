@@ -21,7 +21,12 @@ export default function TrackClimbs() {
         .then((climbsInfo: any) => {
             setClimbData(climbsInfo);
         }
-    );}, [])
+    );}, [removed])
+
+    function removeNode(){
+        const opposite = !removed 
+        setRemoved(opposite)
+    }
 
     interface climbNode {
         item: {Grade: string, Description: string, Location: string, Date: string, climbid: string}
@@ -33,7 +38,7 @@ export default function TrackClimbs() {
         <ScreenLayout>
             <Text className='text-center text-4xl font-bold mt-16 mb-3'>Climbs</Text>
             <View className="flex-1 rounded items-center justify-center bg-ug-white pt-3">
-                <FlatList data={climbData} renderItem={({ item }: climbNode) => <ClimbSquare date={item.Date} Grade={item.Grade} climbid={item.climbid} removedFunction={setRemoved}/>} keyExtractor={item => item.climbid} numColumns={columns}/>
+                <FlatList data={climbData} renderItem={({ item }: climbNode) => <ClimbSquare date={item.Date} Grade={item.Grade} climbid={item.climbid} removedFunction={removeNode}/>} keyExtractor={item => item.climbid} numColumns={columns}/>
                 <Link className="rounded-full absolute bottom-10 right-10 text-ug-white text-[20px] bg-ug-black p-5 px-7" href="/addclimb">
                     <Text>
                         +

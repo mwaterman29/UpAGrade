@@ -38,17 +38,21 @@ export default function TrackClimbs() {
       const Router = useRouter()
 
     function setUpObject(){
-        const climbID = uid()
-        const climbInfo = {Grade: valueGrade, Description: description, Location: location, Date: date, climbid: climbID}
-        //console.log(climbInfo.Grade, climbInfo.Description, climbInfo.Location)
-        storage.save({
-            key: 'climbs',
-            id: climbID,
-            data: climbInfo,
-            expires: null
-        }).then();
-        
-        Router.replace('/climbs')
+        if (description.trim() && location.trim() && date.trim()) {
+            const climbID = uid()
+            const climbInfo = {Grade: valueGrade, Description: description, Location: location, Date: date, climbid: climbID}
+            //console.log(climbInfo.Grade, climbInfo.Description, climbInfo.Location)
+            storage.save({
+                key: 'climbs',
+                id: climbID,
+                data: climbInfo,
+                expires: null
+            }).then();
+            
+            Router.replace('/climbs')
+        } else {
+            alert('Please Fill All Fields')
+        }
     }
 
 

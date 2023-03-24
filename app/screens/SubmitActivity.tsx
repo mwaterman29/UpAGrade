@@ -1,10 +1,5 @@
-import ScreenLayout from "../components/ScreenLayout";
-import React, {ReactNode, useState, useEffect} from 'react';
-import { Button, Text, View, TextInput, Keyboard} from 'react-native';
-import RadioGroup, {RadioButtonProps} from 'react-native-radio-buttons-group';
 import { Link, useSearchParams, useRouter } from "expo-router";
 
-import uid from '../uid';
 import storage from '../storage';
 
 import {Activity} from './AddActivity';

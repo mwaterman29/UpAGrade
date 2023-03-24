@@ -19,68 +19,66 @@ export type {Workout}
 
 const AddWorkout = () => {
 
-    //Date picker
+    const { givenDate } = useSearchParams();
+
+    let [currentWorkout, setCurrentWorkout] = useState<Workout>({
+      date: new Date(),
+      activities: [],
+    });
+  
     const [isDatePickerVisible, setDatePickerVisibility] = useState(false);
-
+  
     const showDatePicker = () => {
-        setDatePickerVisibility(true);
+      setDatePickerVisibility(true);
     };
-
+  
     const hideDatePicker = () => {
-        setDatePickerVisibility(false);
+      setDatePickerVisibility(false);
+    };
+  
+    const handleConfirm = (date: Date) => {
+      loadWorkout(date);
+      hideDatePicker();
     };
 
-    const handleConfirm = (date : Date) => {
-        loadWorkout(date);
-        hideDatePicker();
-    };
-
-    const [currentWorkout, setCurrentWorkout] = useState<Workout>({        
-        date: new Date("1970-01-01"),
-        activities: new Array()
-    })
-
-    function loadWorkout(date: Date)
-    {
-        console.log("loading from " + date.toDateString())
-        storage.load({
-            key: 'workouts',
-            id: date.toDateString()
-        }).then(ret => { 
-            setCurrentWorkout(ret)
-        }).catch(err => {
-            switch (err.name) {
-                case 'NotFoundError':
-                  setCurrentWorkout({
-                    date: date,
-                    activities: new Array<Activity>()
-                  })
-                  saveWorkout(date);
-                  break;
-                default:
-                    setCurrentWorkout({
-                    date: date,
-                    activities: new Array<Activity>()
-                    })
-                    saveWorkout(date);
-                    break;
-              }
-        })
-    }
-
-    function saveWorkout(date: Date)
-    {
-        storage.save({
+    const loadWorkout = async (date: Date) => {
+        console.log("loading from " + date.toDateString());
+        try {
+          const ret = await storage.load({
             key: 'workouts',
             id: date.toDateString(),
-            data: currentWorkout,
-            expires: null
-        }).then();
-    }
+          });
+          console.log("ret is " + ret + "l: " + ret.activities + " d" + ret.date + " and scw " + setCurrentWorkout);
+          setCurrentWorkout({
+            date: date,
+            activities: ret.activities
+          });
+        } catch (err) {
+          console.log('Error loading workout:', err);
+          setCurrentWorkout({
+            date: date,
+            activities: [],
+          });
+        }
+      };
+  
+    useEffect(() => {
+      if (givenDate) {
+        const date = new Date(givenDate.toString());
+        loadWorkout(date);
+      }
+    }, [givenDate]);
 
     return(
         <ScreenLayout>
             <View className ='flex flex-col h-full justify-evenly items-center'>
+                <Button
+                    onPress={() => {
+                        AsyncStorage.clear();
+                    }}
+                    title = "clear str"
+                />
+
                 <Text>Workout for {currentWorkout.date.toDateString()}</Text>
                 <Button title="Show Date Picker" onPress={showDatePicker} />
                 <DateTimePickerModal

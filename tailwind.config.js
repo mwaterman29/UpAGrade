@@ -14,7 +14,8 @@ module.exports = {
         'ug-light-gray' : '#a3c2b3',
         'ug-gray' : '#838e88',
         'ug-white' : '#ecf6ff',
-        'ug-black' : '#0f0e0d'
+        'ug-black' : '#0f0e0d',
+        'ug-red': '#a63232'
     },
     extend: {},
   },

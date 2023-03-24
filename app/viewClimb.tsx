@@ -29,9 +29,10 @@ export default function ViewClimb() {
         <View className="flex-1 h-full bg-ug-white">
             <Text className='text-center text-4xl font-bold mt-16 mb-3'>View Climb</Text>
             <ScrollView>
-                <Text className="text-center text-2xl font-bold">{climbInformation.Date}</Text>
-                <Text className="text-center text-2xl font-bold">{climbInformation.Description}</Text> 
-                <Text className="text-center text-2xl font-bold">{climbInformation.Location}</Text> 
+                <Text className="text-center text-2xl font-bold">Date: {climbInformation.Date}</Text>
+                <Text className="text-center text-2xl font-bold">Grade: V{climbInformation.Grade}</Text> 
+                <Text className="text-center text-2xl font-bold">Description: {climbInformation.Description}</Text> 
+                <Text className="text-center text-2xl font-bold">Location: {climbInformation.Location}</Text> 
             </ScrollView>
         </View>
     );

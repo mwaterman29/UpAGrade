@@ -11,7 +11,6 @@ export default function TrackClimbs() {
     const [openGrade, setOpenGrade] = useState(false);
     const [valueGrade, setValueGrade] = useState(null);
     const [itemsGrade, setItemsGrade] = useState([
-        {label: 'VB', value: '-1'},
         {label: 'V0', value: '0'},
         {label: 'V1', value: '1'},
         {label: 'V2', value: '2'},
@@ -38,7 +37,7 @@ export default function TrackClimbs() {
       const Router = useRouter()
 
     function setUpObject(){
-        if (description.trim() && location.trim() && date.trim()) {
+        if (description.trim() && location.trim() && date.trim() && valueGrade != null) {
             const climbID = uid()
             const climbInfo = {Grade: valueGrade, Description: description, Location: location, Date: date, climbid: climbID}
             //console.log(climbInfo.Grade, climbInfo.Description, climbInfo.Location)
@@ -61,13 +60,15 @@ export default function TrackClimbs() {
             <Text className='text-center text-4xl font-bold mt-16 mb-3'>Add Climb</Text>
             <View className="flex-1 h-full bg-ug-white">
                 <DropDownPicker
+                        placeholder='Pick A Grade'
                         open={openGrade}
                         value={valueGrade}
                         items={itemsGrade}
                         setOpen={setOpenGrade}
                         setValue={setValueGrade}
                         setItems={setItemsGrade}
-                        listMode="MODAL" />
+                        listMode="MODAL"
+                        theme='DARK' />
                 <TextInput className='h-[100px] text-xl' onChangeText={(change)=>setDescription(change)} placeholder='Enter A Description'/>
                 <TextInput className='text-2xl' onChangeText={(change)=>setLocation(change)} placeholder='Enter A Location'/>
                 <TextInput className='text-2xl' onChangeText={(change)=>setDate(change)} placeholder='Enter A Date'/>

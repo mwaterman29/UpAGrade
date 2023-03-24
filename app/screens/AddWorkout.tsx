@@ -42,19 +42,19 @@ const AddWorkout = () => {
     };
 
     const loadWorkout = async (date: Date) => {
-        console.log("loading from " + date.toDateString());
+        //console.log("loading from " + date.toDateString());
         try {
           const ret = await storage.load({
             key: 'workouts',
             id: date.toDateString(),
           });
-          console.log("ret is " + ret + "l: " + ret.activities + " d" + ret.date + " and scw " + setCurrentWorkout);
+          //console.log("ret is " + ret + "l: " + ret.activities + " d" + ret.date + " and scw " + setCurrentWorkout);
           setCurrentWorkout({
             date: date,
             activities: ret.activities
           });
         } catch (err) {
-          console.log('Error loading workout:', err);
+          //console.log('Error loading workout:', err);
           setCurrentWorkout({
             date: date,
             activities: [],

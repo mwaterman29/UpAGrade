@@ -30,23 +30,20 @@ const AddWorkout = () => {
     };
 
     const handleConfirm = (date : Date) => {
-        setCurrentDate(date);
-        loadWorkout();
+        loadWorkout(date);
         hideDatePicker();
     };
 
-    //Date, workout
-    let [currentDate, setCurrentDate] = useState(new Date("1970-01-01"));
     const [currentWorkout, setCurrentWorkout] = useState<Workout>({        
         date: new Date("1970-01-01"),
         activities: new Array()
     })
 
-    function loadWorkout()
+    function loadWorkout(date: Date)
     {
         storage.load({
             key: 'workouts',
-            id: currentDate.toDateString()
+            id: date.toDateString()
         }).then(ret => { 
             //Handled
             setCurrentWorkout(ret)
@@ -54,10 +51,10 @@ const AddWorkout = () => {
             switch (err.name) {
                 case 'NotFoundError':
                   setCurrentWorkout({
-                    date: currentDate,
+                    date: date,
                     activities: new Array<Activity>()
                   })
-                  saveWorkout();
+                  saveWorkout(date);
                   break;
                 default:
                     console.log(err);
@@ -66,68 +63,73 @@ const AddWorkout = () => {
         })
     }
 
-    function saveWorkout()
+    function saveWorkout(date: Date)
     {
         storage.save({
             key: 'workouts',
-            id: currentDate.toDateString(),
+            id: date.toDateString(),
             data: currentWorkout,
             expires: null
         }).then();
     }
+    
 
-    function loadWorkoutThenPopulate(type: Number, num: String | undefined, by: String | undefined, desc: String)
-    {
-        console.log("loading")
+    function loadWorkoutThenPopulate(date: Date, type: Number, num: String | undefined, by: String | undefined, desc: String) {
+        let newActivity: Activity = {
+          type: type,
+          num: num,
+          by: by,
+          desc: desc,
+          completed: false
+        }
+      
+        // Load the workout from storage
         storage.load({
+          key: 'workouts',
+          id: date.toDateString()
+        }).then((workout) => {
+          // Append the new activity to the workout
+          workout.activities.push(newActivity);
+      
+          // Save the updated workout back to storage
+          storage.save({
             key: 'workouts',
-            id: currentDate.toDateString()
-        }).then(ret => { 
-            //Handled
-            console.log("setting")
-            setCurrentWorkout(ret)
-        }).then(() => {
-            console.log("proceeding")
-            
-            let newActivity: Activity = {
-                type: type,
-                num: num,
-                by: by,
-                desc: desc,
-                completed: false
-            }
-            useEffect(() => {
-                console.log("Pushing activity, rerouting "+ currentWorkout.activities.length);
-    
-                //Push onto current list
-                currentWorkout.activities.push(newActivity);
-                
-                console.log("Pushed");
-    
-                //Save
-                saveWorkout();
-    
-                console.log("Saved " + currentWorkout.activities.length);
-    
-                Router.replace('./AddWorkout?added=true')
-    
-                console.log("Routed");
-            });
-        }).catch(err => {
-            switch (err.name) {
-                case 'NotFoundError':
-                  setCurrentWorkout({
-                    date: currentDate,
-                    activities: new Array<Activity>()
-                  })
-                  saveWorkout();
-                  break;
-                default:
-                    console.log(err);
-                    break;
-              }
-        })
-    }
+            id: date.toDateString(),
+            data: workout,
+            expires: null
+          }).then(() => {
+            // Update the current workout in the state with the updated workout
+            setCurrentWorkout(workout);
+          }).catch((err) => {
+            console.log(err);
+          });
+        }).catch((err) => {
+          switch (err.name) {
+            case 'NotFoundError':
+              // Create a new workout object if not found in storage
+              let newWorkout: Workout = {
+                date: date,
+                activities: [newActivity]
+              };
+              // Save the new workout to storage
+              storage.save({
+                key: 'workouts',
+                id: date.toDateString(),
+                data: newWorkout,
+                expires: null
+              }).then(() => {
+                // Update the current workout in the state with the new workout
+                setCurrentWorkout(newWorkout);
+              }).catch((err) => {
+                console.log(err);
+              });
+              break;
+            default:
+              console.log(err);
+              break;
+          }
+        });
+      }
 
     //Search params
     /*
@@ -139,63 +141,46 @@ const AddWorkout = () => {
         Navigates to activity page with that date as the parameter
         User populates activity
         User clicks add to my workout ->
-        Returns to this page with that date populated, and the contents of the activity to be added on.
-    */
+        Returns to this page with that date populated, and the contents of the activity to be added on.        */
+
+    const [activityAdded, setActivityAdded] = useState(false);
 
     const Router = useRouter();
-    const { givenDate, type, num, by, desc} = useSearchParams();
-    if(givenDate && type && desc)
+    const { givenDate, type, num, by, desc, added} = useSearchParams();
+    if(givenDate && type && desc && !activityAdded)
     {
-        console.log("Hit " + usePathname() + " with " + useSearchParams() + " GD " + givenDate + " type " + type + " desc " + desc)
-
-        let givenDateObj = new Date(givenDate.toString());
-        if(currentDate.toDateString() != givenDate)
-        {
-            console.log("Updating current date!");
-            setCurrentDate(givenDateObj);
-        }
-        if(currentWorkout.date.toDateString() != givenDate)
-        {
-            console.log("Loading workout!")
-
-            let typeNA = parseInt(type.toString());
-            let numNA;
-            if(num)
-                numNA = num.toString();
-            else
-                numNA = undefined;
-            let byNA;
-            if(by)
-                byNA = by.toString();
-            else
-                byNA = undefined;
-            let descNA = desc.toString();
-
-            loadWorkoutThenPopulate(typeNA, numNA, byNA, descNA);
-
-            
-        }
+        let typeNA = parseInt(type.toString());
+        let numNA;
+        if(num)
+            numNA = num.toString();
         else
-            console.log(currentWorkout.date.toDateString() + " matches " + givenDate);
+            numNA = undefined;
+        let byNA;
+        if(by)
+            byNA = by.toString();
+        else
+            byNA = undefined;
+        let descNA = desc.toString();
 
+        let date = new Date(givenDate.toString());
+        loadWorkoutThenPopulate(date, typeNA, numNA, byNA, descNA);
+        setActivityAdded(true);
+        //setCurrentDate(new Date(givenDate.toString()));
+    }
+    else if(activityAdded)
+    {
+        //loadWorkout();
+        Router.replace("./AddWorkout?givenDate="+givenDate);
     }
     else
     {
-        let todayString = new Date().toDateString();
-        if(currentDate.toDateString() != todayString)
-        {
-            console.log("Updating current date!");
-            setCurrentDate(new Date());
-            console.log("Loading workout!")
-            loadWorkout();
-        }
     }
 
 
     return(
         <ScreenLayout>
             <View className ='flex flex-col h-full justify-evenly items-center'>
-                <Text>Workout for {currentDate.toDateString()}</Text>
+                <Text>Workout for {currentWorkout.date.toDateString()}</Text>
                 <Button title="Show Date Picker" onPress={showDatePicker} />
                 <DateTimePickerModal
                     isVisible={isDatePickerVisible}
@@ -213,7 +198,7 @@ const AddWorkout = () => {
                     )
                 })}
 
-                <Link href={"./AddActivity?givenDate=" + currentDate.toDateString()}>
+                <Link href={"./AddActivity?givenDate=" + currentWorkout.date.toDateString()}>
                     <View className="bg-ug-dark-green m-2 p-4">
                         <Text className="text-ug-white text-xl text-center">
                             Add New Activity

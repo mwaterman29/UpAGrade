@@ -36,9 +36,9 @@ const AddWorkout = () => {
     };
 
     //Date, workout
-    let [currentDate, setCurrentDate] = useState(new Date());
+    let [currentDate, setCurrentDate] = useState(new Date("1970-01-01"));
     const [currentWorkout, setCurrentWorkout] = useState<Workout>({        
-        date: new Date(),
+        date: new Date("1970-01-01"),
         activities: new Array()
     })
 
@@ -76,6 +76,59 @@ const AddWorkout = () => {
         }).then();
     }
 
+    function loadWorkoutThenPopulate(type: Number, num: String | undefined, by: String | undefined, desc: String)
+    {
+        console.log("loading")
+        storage.load({
+            key: 'workouts',
+            id: currentDate.toDateString()
+        }).then(ret => { 
+            //Handled
+            console.log("setting")
+            setCurrentWorkout(ret)
+        }).then(() => {
+            console.log("proceeding")
+            
+            let newActivity: Activity = {
+                type: type,
+                num: num,
+                by: by,
+                desc: desc,
+                completed: false
+            }
+            useEffect(() => {
+                console.log("Pushing activity, rerouting "+ currentWorkout.activities.length);
+    
+                //Push onto current list
+                currentWorkout.activities.push(newActivity);
+                
+                console.log("Pushed");
+    
+                //Save
+                saveWorkout();
+    
+                console.log("Saved " + currentWorkout.activities.length);
+    
+                Router.replace('./AddWorkout?added=true')
+    
+                console.log("Routed");
+            });
+        }).catch(err => {
+            switch (err.name) {
+                case 'NotFoundError':
+                  setCurrentWorkout({
+                    date: currentDate,
+                    activities: new Array<Activity>()
+                  })
+                  saveWorkout();
+                  break;
+                default:
+                    console.log(err);
+                    break;
+              }
+        })
+    }
+
     //Search params
     /*
     Flow is as follows:
@@ -104,43 +157,40 @@ const AddWorkout = () => {
         if(currentWorkout.date.toDateString() != givenDate)
         {
             console.log("Loading workout!")
+
+            let typeNA = parseInt(type.toString());
+            let numNA;
+            if(num)
+                numNA = num.toString();
+            else
+                numNA = undefined;
+            let byNA;
+            if(by)
+                byNA = by.toString();
+            else
+                byNA = undefined;
+            let descNA = desc.toString();
+
+            loadWorkoutThenPopulate(typeNA, numNA, byNA, descNA);
+
+            
+        }
+        else
+            console.log(currentWorkout.date.toDateString() + " matches " + givenDate);
+
+    }
+    else
+    {
+        let todayString = new Date().toDateString();
+        if(currentDate.toDateString() != todayString)
+        {
+            console.log("Updating current date!");
+            setCurrentDate(new Date());
+            console.log("Loading workout!")
             loadWorkout();
         }
-
-        //Convert search params to obj;
-        let typeNA = parseInt(type.toString());
-        let numNA;
-        if(num)
-            numNA = num.toString();
-        else
-            numNA = undefined;
-        let byNA;
-        if(by)
-            byNA = by.toString();
-        else
-            byNA = undefined;
-        let descNA = desc.toString();
-        
-        //Construct new activity object
-        let newActivity: Activity = {
-            type: typeNA,
-            num: numNA,
-            by: byNA,
-            desc: descNA,
-            completed: false
-        }
-
-        useEffect(() => {
-            console.log("Pushing activity, rerouting");
-
-            //Push onto current list
-            currentWorkout.activities.push(newActivity);
-
-            //Save
-            saveWorkout();
-            Router.replace('./AddWorkout?added=true')
-        });
     }
+
 
     return(
         <ScreenLayout>
@@ -153,6 +203,15 @@ const AddWorkout = () => {
                     onConfirm={handleConfirm}
                     onCancel={hideDatePicker}
                 />
+
+                {currentWorkout.activities.map((activity) => {
+                    console.log("Hit activity " + activity.desc);
+                    return(
+                        <Text> 
+                            hi i'm a workout {activity.desc};
+                        </Text>
+                    )
+                })}
 
                 <Link href={"./AddActivity?givenDate=" + currentDate.toDateString()}>
                     <View className="bg-ug-dark-green m-2 p-4">

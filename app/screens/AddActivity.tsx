@@ -79,7 +79,7 @@ const AddActivity = () => {
     function getWorkoutLink()
     {
         //Populate all the non-null search params to link back to the workout
-        let link = "./AddWorkout";
+        let link = "./SubmitActivity";
         link += "?givenDate=" + givenDate;
         let selButton = radioButtons.find(rb => rb.selected);
         if(!selButton)

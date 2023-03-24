@@ -8,6 +8,7 @@ import { Activity } from "./AddActivity";
 
 import uid from '.././uid';
 import storage from '.././storage';
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type Workout = {
     date: Date,
@@ -41,11 +42,11 @@ const AddWorkout = () => {
 
     function loadWorkout(date: Date)
     {
+        console.log("loading from " + date.toDateString())
         storage.load({
             key: 'workouts',
             id: date.toDateString()
         }).then(ret => { 
-            //Handled
             setCurrentWorkout(ret)
         }).catch(err => {
             switch (err.name) {
@@ -57,7 +58,11 @@ const AddWorkout = () => {
                   saveWorkout(date);
                   break;
                 default:
-                    console.log(err);
+                    setCurrentWorkout({
+                    date: date,
+                    activities: new Array<Activity>()
+                    })
+                    saveWorkout(date);
                     break;
               }
         })
@@ -72,110 +77,6 @@ const AddWorkout = () => {
             expires: null
         }).then();
     }
-    
-
-    function loadWorkoutThenPopulate(date: Date, type: Number, num: String | undefined, by: String | undefined, desc: String) {
-        let newActivity: Activity = {
-          type: type,
-          num: num,
-          by: by,
-          desc: desc,
-          completed: false
-        }
-      
-        // Load the workout from storage
-        storage.load({
-          key: 'workouts',
-          id: date.toDateString()
-        }).then((workout) => {
-          // Append the new activity to the workout
-          workout.activities.push(newActivity);
-      
-          // Save the updated workout back to storage
-          storage.save({
-            key: 'workouts',
-            id: date.toDateString(),
-            data: workout,
-            expires: null
-          }).then(() => {
-            // Update the current workout in the state with the updated workout
-            setCurrentWorkout(workout);
-          }).catch((err) => {
-            console.log(err);
-          });
-        }).catch((err) => {
-          switch (err.name) {
-            case 'NotFoundError':
-              // Create a new workout object if not found in storage
-              let newWorkout: Workout = {
-                date: date,
-                activities: [newActivity]
-              };
-              // Save the new workout to storage
-              storage.save({
-                key: 'workouts',
-                id: date.toDateString(),
-                data: newWorkout,
-                expires: null
-              }).then(() => {
-                // Update the current workout in the state with the new workout
-                setCurrentWorkout(newWorkout);
-              }).catch((err) => {
-                console.log(err);
-              });
-              break;
-            default:
-              console.log(err);
-              break;
-          }
-        });
-      }
-
-    //Search params
-    /*
-    Flow is as follows:
-        Dashboard ->
-        Navigates to the Add Workout page with no params.
-        User selects date
-        User clicks add activity ->
-        Navigates to activity page with that date as the parameter
-        User populates activity
-        User clicks add to my workout ->
-        Returns to this page with that date populated, and the contents of the activity to be added on.        */
-
-    const [activityAdded, setActivityAdded] = useState(false);
-
-    const Router = useRouter();
-    const { givenDate, type, num, by, desc, added} = useSearchParams();
-    if(givenDate && type && desc && !activityAdded)
-    {
-        let typeNA = parseInt(type.toString());
-        let numNA;
-        if(num)
-            numNA = num.toString();
-        else
-            numNA = undefined;
-        let byNA;
-        if(by)
-            byNA = by.toString();
-        else
-            byNA = undefined;
-        let descNA = desc.toString();
-
-        let date = new Date(givenDate.toString());
-        loadWorkoutThenPopulate(date, typeNA, numNA, byNA, descNA);
-        setActivityAdded(true);
-        //setCurrentDate(new Date(givenDate.toString()));
-    }
-    else if(activityAdded)
-    {
-        //loadWorkout();
-        Router.replace("./AddWorkout?givenDate="+givenDate);
-    }
-    else
-    {
-    }
-
 
     return(
         <ScreenLayout>

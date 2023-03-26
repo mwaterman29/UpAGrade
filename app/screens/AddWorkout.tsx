@@ -9,6 +9,7 @@ import { Activity } from "./AddActivity";
 import uid from '.././uid';
 import storage from '.././storage';
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import ActivityComponent from "../components/ActivityComponent";
 
 type Workout = {
     date: Date,
@@ -87,15 +88,14 @@ const AddWorkout = () => {
                     onConfirm={handleConfirm}
                     onCancel={hideDatePicker}
                 />
-
-                {currentWorkout.activities.map((activity) => {
-                    console.log("Hit activity " + activity.desc);
-                    return(
-                        <Text> 
-                            hi i'm a workout {activity.desc};
-                        </Text>
-                    )
-                })}
+                <View>
+                  {currentWorkout.activities.map((activity) => {
+                      //console.log("Hit activity " + activity.desc);
+                      return(
+                        <ActivityComponent key={"k_"+activity.desc} activity = {activity} />
+                      )
+                  })}
+                </View>
 
                 <Link href={"./AddActivity?givenDate=" + currentWorkout.date.toDateString()}>
                     <View className="bg-ug-dark-green m-2 p-4">

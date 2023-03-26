@@ -5,32 +5,38 @@ import { Link } from "expo-router";
 const Navbar = () => {
     return(
         <View className = 'flex flex-row h-full bg-ug-gray'>
-            <Link className='flex-1 px-3' href="/">
-                <Text className='bg-ug-green '>
-                    Workout
+            <Link className='flex-1 mx-3 bg-ug-green text-center rounded-lg' href="/">
+                <Text className=''>
+                    Home
+                </Text>
+            </Link>
+
+            <Link className='flex-1 mx-3 bg-ug-green text-center rounded-lg' href="/screens/TrackWorkouts">
+                <Text className=''>
+                    Workouts
+                </Text>
+            </Link>
+
+            <Link className='flex-1 mx-3 bg-ug-green text-center rounded-lg' href="/screens/AddWorkout">
+                <Text className=''>
+                    Add Activity
                 </Text>
             </Link>
             
-            <Link className='flex-1 px-3' href="./screens/StrengthAssessmentInfo">
-                <Text className='bg-ug-green'>
+            <Link className='flex-1 mx-3 bg-ug-green text-center rounded-lg' href="/screens/StrengthAssessmentInfo">
+                <Text className=''>
                     Strength Assessment
                 </Text>
             </Link>
             
-            <Link className='flex-1 px-3' href="/">
-                <Text className='bg-ug-green '>
-                    Home
-                </Text>
-            </Link>
-            
-            <Link className='flex-1 px-3' href="/climbs">
-                <Text className='bg-ug-green'>
+            <Link className='flex-1 mx-3 bg-ug-green text-center rounded-lg' href="/climbs">
+                <Text className=''>
                     climbs
                 </Text>
             </Link>
 
-            <Link className='flex-1 px-3' href="/injuries">
-                <Text className='bg-ug-green '>
+            <Link className='flex-1 mx-3 bg-ug-green text-center rounded-lg' href="/injuries">
+                <Text className=''>
                     injuries
                 </Text>
             </Link>

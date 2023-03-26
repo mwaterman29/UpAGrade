@@ -10,7 +10,13 @@ export default function App() {
     <ScreenLayout >
       <Text className='mt-16'>test test 2</Text>
       <Link href="./screens/StrengthAssessmentInfo">
-        <Text className='text-ug-green'>Strength Assessment</Text>
+        <Text className='text-2xl text-ug-green'>Strength Assessment</Text>
+      </Link>
+      <Link href="./screens/AddWorkout">
+        <Text className='text-2xl text-ug-green'>Add Activity</Text>
+      </Link>
+      <Link href="./screens/TrackWorkouts">
+        <Text className='text-2xl text-ug-green'>Track Workouts</Text>
       </Link>
       <Link href="/climbs">
         <Text className='text-purple-500'>

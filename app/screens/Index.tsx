@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Text, View, Image, Pressable } from 'react-native';
 import { Link, useRouter } from "expo-router";
-import ScreenLayout from './components/ScreenLayout';
+import ScreenLayout from '../components/ScreenLayout';
 
 export default function App() {
   const Router = useRouter()

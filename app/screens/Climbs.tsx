@@ -2,9 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import React, { SetStateAction, useEffect, useState } from 'react';
 import { Text, View, Button, FlatList } from 'react-native';
 import { Link } from "expo-router";
-import ClimbSquare from './components/climbSquare';
-import ScreenLayout from './components/ScreenLayout';
-import storage from './storage';
+import ClimbSquare from '../components/climbSquare';
+import ScreenLayout from '../components/ScreenLayout';
+import storage from '../storage';
 
 export default function TrackClimbs() {
     /*

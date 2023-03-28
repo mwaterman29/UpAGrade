@@ -2,8 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { Text, View, Button, ScrollView } from 'react-native';
 import { Link } from "expo-router";
-import InjuryCard from './components/InjuryCard';
-import ScreenLayout from './components/ScreenLayout';
+import InjuryCard from '../components/InjuryCard';
+import ScreenLayout from '../components/ScreenLayout';
 
 export default function Injuries() {
     return (

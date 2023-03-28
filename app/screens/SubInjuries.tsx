@@ -2,9 +2,9 @@ import { StatusBar } from 'expo-status-bar';
 import React, { Key } from 'react';
 import { Text, View, ScrollView, FlatList, Button} from 'react-native';
 import { useLocalSearchParams, useRouter } from "expo-router";
-import SubInjuryCard from './components/SubInjuryCard';
+import SubInjuryCard from '../components/SubInjuryCard';
 import { PropertyName } from 'typescript';
-import ScreenLayout from './components/ScreenLayout';
+import ScreenLayout from '../components/ScreenLayout';
 
 export default function SubInjuries() {
     const Params = useLocalSearchParams()

@@ -37,6 +37,11 @@ export default function App() {
               <Text className='font-bold text-xl text-center text-ug-white'>Injuries</Text>
             </View>
           </Pressable>
+          <Pressable onPress={() => Router.replace('./screens/NotesScreen')}>
+            <View className="w-[130px] m-6 rounded-lg justify-center h-[130px] bg-ug-dark-green">
+              <Text className='font-bold text-xl text-center text-ug-white'>Notes</Text>
+            </View>
+          </Pressable>
         </View>
       </View>
     </View >

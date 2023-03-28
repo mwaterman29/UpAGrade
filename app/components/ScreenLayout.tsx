@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {ReactNode} from 'react';
-import { Text, View, KeyboardAvoidingView} from 'react-native';
+import React, {useState, useEffect, ReactNode} from 'react';
+import { Text, View, KeyboardAvoidingView, Keyboard} from 'react-native';
 import { Link } from "expo-router";
 
 //Component imports
@@ -11,15 +11,40 @@ type Props = {
 }
   
 const ScreenLayout = ({children}: Props) => {
+
+    const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+    useEffect(() => {
+        const keyboardDidShowListener = Keyboard.addListener(
+          'keyboardDidShow',
+          () => {
+            setKeyboardVisible(true); // or some other action
+          }
+        );
+        const keyboardDidHideListener = Keyboard.addListener(
+          'keyboardDidHide',
+          () => {
+            setKeyboardVisible(false); // or some other action
+          }
+        );
+    
+        return () => {
+          keyboardDidHideListener.remove();
+          keyboardDidShowListener.remove();
+        };
+      }, []);
+
     return(
         <KeyboardAvoidingView>
-                <View className="flex flex-col w-full h-full">
+                <View className="flex flex-col w-full h-full bg-ug-light-gray">
                     <View className='flex basis-[90%] bg-ug-light-gray p-4'>
                         {children}
                     </View>       
+                    {
+                    !isKeyboardVisible &&
                     <View className='flex basis-[10%] bg-ug-gray p-2'>
-                        <Navbar/>
+                    <Navbar/>
                     </View>  
+                    }
                 </View>
         </KeyboardAvoidingView>
     )

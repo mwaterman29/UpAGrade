@@ -84,9 +84,10 @@ const NotesScreen = () => {
 
     <ScreenLayout>
       <View className ='flex flex-col h-full justify-evenly items-center'>
+      {!isKeyboardVisible &&
         <View className="flex basis-[15%] justify-center">
-          <Text>Notes for {date.toDateString()}</Text>
-          {!isKeyboardVisible &&
+          <Text className="text-2xl underline text-ug-white">Notes for {date.toDateString()}</Text>
+          
           <View className="flex">          
             <Button title="Show Date Picker" onPress={showDatePicker} />
             <DateTimePickerModal
@@ -96,13 +97,12 @@ const NotesScreen = () => {
               onCancel={hideDatePicker}
             />
           </View>
-        }
-        </View>
-        
+        </View> 
+      }
 
-        <View className="flex w-full basis-[70%] bg-ug-red">
+        <View className="flex w-full basis-[70%]">
           <TextInput
-            className="flex h-full w-full bg-ug-light-blue"
+            className="flex h-full w-full bg-ug-light-blue rounded-lg"
             multiline={true}
             numberOfLines={10}
             onChangeText={setNotes}

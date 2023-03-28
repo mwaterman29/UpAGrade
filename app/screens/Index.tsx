@@ -27,12 +27,12 @@ export default function App() {
               <Text className='font-bold text-xl text-center text-ug-white'>Strength Assessment</Text>
             </View>
           </Pressable>  
-          <Pressable onPress={() => Router.replace('/climbs')}>
+          <Pressable onPress={() => Router.replace('./screens/Climbs')}>
             <View className="w-[130px] m-6 rounded-lg justify-center h-[130px] bg-ug-dark-green">
               <Text className='font-bold text-xl text-center text-ug-white'>Climbs</Text>
             </View>
           </Pressable>
-          <Pressable onPress={() => Router.replace('/injuries')}>
+          <Pressable onPress={() => Router.replace('./screens/Injuries')}>
             <View className="w-[130px] m-6 rounded-lg justify-center h-[130px] bg-ug-dark-green">
               <Text className='font-bold text-xl text-center text-ug-white'>Injuries</Text>
             </View>

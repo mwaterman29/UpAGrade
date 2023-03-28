@@ -2,8 +2,8 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
 import { Text, View, Button, ScrollView } from 'react-native';
 import { Link, useSearchParams } from "expo-router";
-import storage from './storage'
-import ScreenLayout from './components/ScreenLayout';
+import storage from '../storage'
+import ScreenLayout from '../components/ScreenLayout';
 
 type climbNode = {
     [key: string]: string

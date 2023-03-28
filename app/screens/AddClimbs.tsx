@@ -3,9 +3,9 @@ import React, {useState} from 'react';
 import { Text, View, Button, TextInput } from 'react-native';
 import { Link, useRouter } from "expo-router";
 import DropDownPicker from 'react-native-dropdown-picker';
-import ScreenLayout from './components/ScreenLayout';
-import uid from './uid';
-import storage from './storage';
+import ScreenLayout from '../components/ScreenLayout';
+import uid from '../uid';
+import storage from '../storage';
 
 export default function TrackClimbs() {
     const [openGrade, setOpenGrade] = useState(false);
@@ -48,7 +48,7 @@ export default function TrackClimbs() {
                 expires: null
             }).then();
             
-            Router.replace('/climbs')
+            Router.replace('/Climbs')
         } else {
             alert('Please Fill All Fields')
         }

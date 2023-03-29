@@ -48,7 +48,7 @@ export default function TrackClimbs() {
                 expires: null
             }).then();
             
-            Router.replace('/Climbs')
+            Router.replace('/screens/Climbs')
         } else {
             alert('Please Fill All Fields')
         }

@@ -43,7 +43,7 @@ function ClimbSquare({date, Grade, climbid, removedFunction}: Props) {
             </View>
         </Modal>
         <View className='w-auto mb-5 mx-2'>
-            <Pressable className="w-[100px] rounded h-[100px] justify-center bg-ug-light-gray" onLongPress={() => setModalVisible(true)} onPress={() => router.push({pathname: '/viewClimb', params: {climbid}})}>
+            <Pressable className="w-[100px] rounded h-[100px] justify-center bg-ug-light-gray" onLongPress={() => setModalVisible(true)} onPress={() => router.push({pathname: '/screens/ViewClimb', params: {climbid}})}>
                 <Text className="text-center text-2xl font-bold">{date}</Text>
                 <Text className="text-center text-2xl font-bold">V{Grade}</Text>
             </Pressable>

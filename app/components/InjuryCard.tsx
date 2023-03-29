@@ -14,7 +14,7 @@ function InjuryCard({Title}: Props) {
 
     return (
         <View className='w-auto mb-5 mx-2'>
-            <Pressable className="w-full rounded-full h-[100px] justify-center bg-ug-light-gray" onPress={() => router.push({pathname: '/SubInjuries', params: {SubInjuries: Title}})}>
+            <Pressable className="w-full rounded-full h-[100px] justify-center bg-ug-light-gray" onPress={() => router.push({pathname: '/screens/SubInjuries', params: {SubInjuries: Title}})}>
                 <Text className="text-center text-2xl font-bold">{Title}</Text>
             </Pressable>
         </View>

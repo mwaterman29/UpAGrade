@@ -38,7 +38,7 @@ export default function TrackClimbs() {
             <Text className='text-center text-4xl font-bold mt-16 mb-3'>Climbs</Text>
             <View className="flex-1 rounded items-center justify-center bg-ug-white pt-3">
                 <FlatList data={climbData} renderItem={({ item }: climbNode) => <ClimbSquare date={item.Date} Grade={item.Grade} climbid={item.climbid} removedFunction={removeNode}/>} keyExtractor={item => item.climbid} numColumns={columns}/>
-                <Link className="rounded-full absolute bottom-10 right-10 text-ug-white text-[20px] bg-ug-black p-5 px-7" href="/addclimb">
+                <Link className="rounded-full absolute bottom-10 right-10 text-ug-white text-[20px] bg-ug-black p-5 px-7" href="/screens/AddClimb">
                     <Text>
                         +
                     </Text>

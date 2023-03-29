@@ -116,11 +116,4 @@ export default function Recommendations() {
         );
     }
 
-
-    return (
-        <ScreenLayout>
-            <Text className='text-center text-4xl font-bold mt-16 mb-3'>Recommendations</Text>
-            <Text>{climbGrade}</Text>
-        </ScreenLayout>
-    );
 }

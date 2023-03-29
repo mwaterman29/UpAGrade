@@ -1,11 +1,13 @@
 import ScreenLayout from "../components/ScreenLayout";
-import React, {ReactNode, useState} from 'react';
-import { Text, View } from 'react-native';
-import { Link, useSearchParams } from "expo-router";
+import React, {ReactNode, useEffect, useState} from 'react';
+import { Pressable, Text, View } from 'react-native';
+import { Link, useRouter, useSearchParams } from "expo-router";
 
 const StrengthAssessmentResults = () => {
 
     const { valueFS, valuePU, valueCS, valueMH} = useSearchParams();
+    const [gradeScore, setGradeScore] = useState(0)
+    const router = useRouter();
     
     const gradeKVPs : { [key: number]: string }= {
         4 : "5.10d/6B",
@@ -50,6 +52,9 @@ const StrengthAssessmentResults = () => {
 
     function getGradeFromScore(score: number)
     {
+        useEffect(() => {
+            setGradeScore(score);
+        }, [])
         //need to implement
         return gradeKVPs[score];
     }
@@ -86,14 +91,19 @@ const StrengthAssessmentResults = () => {
                 <Text className="text-4xl text-ug-light-green underline decoration-double">
                     {getGradeFromScore((Number(valueFS) + Number(valuePU) + Number(valueCS) + Number(valueMH)))}!
                 </Text>
-                <Link href={'./StrengthAssessmentInput'}>
+                <Pressable className="bg-ug-dark-green m-2 p-4" onPress={() => router.push({pathname: '/screens/Recommendations', params: {gradeScore}})}>
+                        <Text className="text-ug-white text-xl text-center">
+                            Recommendations
+                        </Text>
+                </Pressable>
+                <Link href={'/screens/StrengthAssessmentInput'}>
                     <View className="bg-ug-dark-green m-2 p-4">
                         <Text className="text-ug-white text-xl text-center">
                             Back to Input
                         </Text>
                     </View>
                 </Link>
-                <Link href={'./index'}>
+                <Link href={'/'}>
                     <View className="bg-ug-dark-green m-2 p-4">
                         <Text className="text-ug-white text-xl text-center">
                             Back to Dashboard

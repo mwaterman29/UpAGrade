@@ -5,7 +5,7 @@ import { Link } from "expo-router";
 const Navbar = () => {
     return(
         <View className = 'flex flex-row h-full bg-ug-gray'>
-            <Link className='flex-1 mx-3 bg-ug-green text-center rounded-lg' href="/screens/">
+            <Link className='flex-1 mx-3 bg-ug-green text-center rounded-lg' href="/">
                 <Text className=''>
                     Home
                 </Text>

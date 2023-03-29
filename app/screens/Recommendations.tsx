@@ -1,98 +1,97 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { SetStateAction, useEffect, useState } from 'react';
-import { Text, View, Button, FlatList } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { Text, View, Button } from 'react-native';
 import { Link, useSearchParams } from "expo-router";
-import ClimbSquare from '../components/climbSquare';
 import ScreenLayout from '../components/ScreenLayout';
 import storage from '../storage';
-import { Int32 } from 'react-native/Libraries/Types/CodegenTypes';
 
 export default function Recommendations() {
-    const [climbGrade, setClimbGrade] = useState(0)
-    const Params = useSearchParams()
+    const [climbGrade, setClimbGrade] = useState(0) //Stores largest climbing grade
+    const Params = useSearchParams() //to get params
 
-    const score = Number(Params.gradeScore)
-    let scoreVGrade: number = 0
+    //Strength Vars
+    const score = Number(Params.gradeScore) //assures its a number
+    let scoreVGrade: number = 0 //stores the V grade after conversion
 
+    //Converts the strength score to V Grade
     switch(true){
-        case (score <= 4):
+        case (score <= 4): //V3
             scoreVGrade = 3
             break;
-        case (score <= 5):
+        case (score <= 5): //V4
             scoreVGrade = 4
             break;
-        case (score <= 8):
+        case (score <= 8): //V5
             scoreVGrade = 5
             break;
-        case (score <= 12):
+        case (score <= 12): //V6
             scoreVGrade = 6
             break;
-        case (score <= 14):
+        case (score <= 14): //V7
             scoreVGrade = 7
             break;
-        case (score <= 16):
+        case (score <= 16): //V8
             scoreVGrade = 8
             break;
-        case (score <= 18):
+        case (score <= 18): //V9
             scoreVGrade = 9
             break;
-        case (score <= 20):
+        case (score <= 20): //V10
             scoreVGrade = 10
             break;
-        case (score <= 22):
+        case (score <= 22): //V11
             scoreVGrade = 11
             break;
-        case (score <= 24):
+        case (score <= 24): //V12
             scoreVGrade = 12
             break;
-        case (score <= 26):
+        case (score <= 26): //V13
             scoreVGrade = 13
             break;
-        case (score <= 28):
+        case (score <= 28): //V14
             scoreVGrade = 14
             break;
-        case (score <= 30):
+        case (score <= 30): //V15
             scoreVGrade = 15
             break;
-        case (score <= 32):
+        case (score <= 32): //V16
             scoreVGrade = 16
             break;
-        case (score >= 33):
+        case (score >= 33): //V17
             scoreVGrade = 17
             break;
-        default:            
+        default: //if NaN i guess
             break;
     }
 
+    //datatype for data being loaded from async storage
     interface climbNode {
         Grade: string, Description: string, Location: string, Date: string, climbid: string
     }
 
-    useEffect(() => {
+    useEffect(() => { //This is where it loads the climb data
         storage.getAllDataForKey('climbs')
         .then((climbsInfo: any) => {
-            
-            let largestGrade: number = -1
-            climbsInfo.forEach((climb: climbNode)=>{
-                if (largestGrade == -1){
+            let largestGrade: number = -1 //largest initial value -1
+            climbsInfo.forEach((climb: climbNode)=>{ //iterates over climbs and compares grades to find the largest
+                if (largestGrade == -1){ //if there is no set largest grade
                     largestGrade = parseInt(climb.Grade)
-                } else if (largestGrade < parseInt(climb.Grade)) {
+                } else if (largestGrade < parseInt(climb.Grade)) { //if current largest is smaller than current climb grade
                     largestGrade = parseInt(climb.Grade)
                 }
             })
-            setClimbGrade(largestGrade);
+            setClimbGrade(largestGrade); //sets state
         }
     );
     }, [])
     
-    if (climbGrade == -1){
+    if (climbGrade == -1){ //if there are no climbs on the climb page
         return (
             <ScreenLayout>
                 <Text className='text-center text-4xl font-bold mt-16 mb-3'>Recommendations</Text>
                 <Text>No climbs Input</Text>
             </ScreenLayout>
         );
-    } else if (climbGrade < scoreVGrade){
+    } else if (climbGrade < scoreVGrade){ //recommends techniques
 
         return (
             <ScreenLayout>
@@ -100,14 +99,14 @@ export default function Recommendations() {
                 <Text>Recommend techinque drill</Text>
             </ScreenLayout>
         );
-    } else if (climbGrade >= scoreVGrade){
+    } else if (climbGrade >= scoreVGrade){ //recommends strength
         return (
             <ScreenLayout>
                 <Text className='text-center text-4xl font-bold mt-16 mb-3'>Recommendations</Text>
                 <Text>Recommend ways to get stronger</Text>
             </ScreenLayout>
         );
-    } else {
+    } else { //maybe loads but i put it here just incase it exists
         return (
             <ScreenLayout>
                 <Text className='text-center text-4xl font-bold mt-16 mb-3'>Recommendations</Text>

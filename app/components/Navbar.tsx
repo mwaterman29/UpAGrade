@@ -29,13 +29,13 @@ const Navbar = () => {
                 </Text>
             </Link>
             
-            <Link className='flex-1 mx-3 bg-ug-green text-center rounded-lg' href="/climbs">
+            <Link className='flex-1 mx-3 bg-ug-green text-center rounded-lg' href="/screen/Climbs">
                 <Text className=''>
                     climbs
                 </Text>
             </Link>
 
-            <Link className='flex-1 mx-3 bg-ug-green text-center rounded-lg' href="/injuries">
+            <Link className='flex-1 mx-3 bg-ug-green text-center rounded-lg' href="/screens/Injuries">
                 <Text className=''>
                     injuries
                 </Text>

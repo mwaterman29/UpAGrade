@@ -14,49 +14,55 @@ export default function Recommendations() {
 
     //Converts the strength score to V Grade
     switch(true){
-        case (score <= 4): //V3
+        case (score <= 4): //V1
+            scoreVGrade = 1
+            break;
+        case (score <= 6): //V2
+            scoreVGrade = 2
+            break;
+        case (score <= 8): //V3
             scoreVGrade = 3
             break;
-        case (score <= 5): //V4
+        case (score <= 10): //V4
             scoreVGrade = 4
             break;
-        case (score <= 8): //V5
+        case (score <= 12): //V5
             scoreVGrade = 5
             break;
-        case (score <= 12): //V6
+        case (score <= 14): //V6
             scoreVGrade = 6
             break;
-        case (score <= 14): //V7
+        case (score <= 18): //V7
             scoreVGrade = 7
             break;
-        case (score <= 16): //V8
+        case (score <= 20): //V8
             scoreVGrade = 8
             break;
-        case (score <= 18): //V9
+        case (score <= 23): //V9
             scoreVGrade = 9
             break;
-        case (score <= 20): //V10
+        case (score <= 26): //V10
             scoreVGrade = 10
             break;
-        case (score <= 22): //V11
+        case (score <= 28): //V11
             scoreVGrade = 11
             break;
-        case (score <= 24): //V12
+        case (score <= 30): //V12
             scoreVGrade = 12
             break;
-        case (score <= 26): //V13
+        case (score <= 32): //V13
             scoreVGrade = 13
             break;
-        case (score <= 28): //V14
+        case (score <= 34): //V14
             scoreVGrade = 14
             break;
-        case (score <= 30): //V15
+        case (score <= 36): //V15
             scoreVGrade = 15
             break;
-        case (score <= 32): //V16
+        case (score <= 38): //V16
             scoreVGrade = 16
             break;
-        case (score >= 33): //V17
+        case (score >= 39): //V17
             scoreVGrade = 17
             break;
         default: //if NaN i guess
@@ -88,29 +94,97 @@ export default function Recommendations() {
         return (
             <ScreenLayout>
                 <Text className='text-center text-4xl font-bold mt-16 mb-3'>Recommendations</Text>
-                <Text>No climbs Input</Text>
+                <Text>Since you haven't input any climbs yet, we can't yet recommend activities to you.</Text>
             </ScreenLayout>
         );
     } else if (climbGrade < scoreVGrade){ //recommends techniques
 
+        //Adaptive Recommendations based on strength
+        let recs;
+        if(scoreVGrade <= 4)
+        {
+            recs =
+            <View>
+                <Text>-Silent Feet Drills</Text>  
+                <Text>-Straight-arm Climbing</Text>
+                <Text>-Learn to flag and pivot</Text>
+            </View>
+        }
+        else if(scoreVGrade <= 9)
+        {
+            recs =
+            <View>
+                <Text>-Focusing on Flashing climbs</Text>  
+                <Text>-Hover-hand Drills</Text>
+                <Text>-Sticky feet Drills.</Text>
+            </View>
+        }
+        else
+        {
+            recs =
+            <View>
+                <Text>-On-sight cleanups</Text>  
+                <Text>-Long traverses</Text>
+                <Text>-Isolate individual move weaknesses</Text>
+            </View>
+        }
+
         return (
             <ScreenLayout>
                 <Text className='text-center text-4xl font-bold mt-16 mb-3'>Recommendations</Text>
-                <Text>Recommend techinque drill</Text>
+                <Text>Since you have the strength to climb higher grades, you should work on improving technique. You could try...</Text>
+                {recs}
             </ScreenLayout>
         );
     } else if (climbGrade >= scoreVGrade){ //recommends strength
+        //Adaptive Recommendations based on strength
+        let recs;
+        if(scoreVGrade <= 4)
+        {
+            recs =
+            <View>
+                <Text>-Pull Ups</Text>  
+                <Text>-Dead Hang Training</Text>
+                <Text>-Shoulder Shrugs</Text>
+                <Text>-L-sit with Knees Bent</Text>
+            </View>
+        }
+        else if(scoreVGrade <= 9)
+        {
+            recs =
+            <View>
+                <Text>-Weighted Pull Ups</Text>  
+                <Text>-One Arm Dead Hang</Text>
+                <Text>-Muscle Ups</Text>
+                <Text>-Campus Boarding: 1-4, 1-5, 1-3-5</Text>
+                <Text>-L-sit</Text>
+            </View>
+        }
+        else
+        {
+            recs =
+            <View>
+                <Text>-Weighted Pull Ups</Text>  
+                <Text>-One Arm Dead Hang</Text> 
+                <Text>-One Arm Pull Ups</Text>
+                <Text>-Muscle Ups</Text>
+                <Text>-Campus Boarding: 1-4-7, 1-5-8, 1-5-9</Text>
+                <Text>-Front Lever</Text>
+            </View>
+        }
+
         return (
             <ScreenLayout>
                 <Text className='text-center text-4xl font-bold mt-16 mb-3'>Recommendations</Text>
-                <Text>Recommend ways to get stronger</Text>
+                <Text>Since your strength {(climbGrade == scoreVGrade ? "matches" : "is less than")} your max grade, you should focus on getting stronger. You should try...</Text>
+                {recs}
             </ScreenLayout>
         );
     } else { //maybe loads but i put it here just incase it exists
         return (
             <ScreenLayout>
                 <Text className='text-center text-4xl font-bold mt-16 mb-3'>Recommendations</Text>
-                <Text>Loading</Text>
+                <Text>Loading...</Text>
             </ScreenLayout>
         );
     }

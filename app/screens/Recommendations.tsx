@@ -104,36 +104,65 @@ export default function Recommendations() {
         if(scoreVGrade <= 4)
         {
             recs =
-            <View>
-                <Text>-Silent Feet Drills</Text>  
-                <Text>-Straight-arm Climbing</Text>
-                <Text>-Learn to flag and pivot</Text>
+            <View className='flex h-full justify-evenly'>
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-Silent Feet Drills</Text>  
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-Straight-arm Climbing</Text>
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-Learn to flag and pivot</Text>
             </View>
         }
         else if(scoreVGrade <= 9)
         {
             recs =
-            <View>
-                <Text>-Focusing on Flashing climbs</Text>  
-                <Text>-Hover-hand Drills</Text>
-                <Text>-Sticky feet Drills.</Text>
+            <View className='flex h-full justify-evenly'>
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-Focusing on Flashing climbs</Text>  
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-Hover-hand Drills</Text>
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-Sticky feet Drills</Text>
             </View>
         }
         else
         {
             recs =
-            <View>
-                <Text>-On-sight cleanups</Text>  
-                <Text>-Long traverses</Text>
-                <Text>-Isolate individual move weaknesses</Text>
+            <View className='flex h-full justify-evenly'>
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-On-sight cleanups</Text>  
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-Long traverses</Text>
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-Isolate individual move weaknesses</Text>
             </View>
         }
 
         return (
             <ScreenLayout>
-                <Text className='text-center text-4xl font-bold mt-16 mb-3'>Recommendations</Text>
-                <Text>Since you have the strength to climb higher grades, you should work on improving technique. You could try...</Text>
-                {recs}
+                <View className='h-full flex flex-col justify-between'>
+                    <View className='flex basis-[40%] '>
+                        <Text className='text-center text-ug-light-green underline text-4xl font-bold mt-4 mb-3'>Recommendations</Text>
+                        <Text className='text-center text-2xl text-ug-white'>Since you have the strength to climb higher grades, you should work on improving technique. You could try...</Text>
+                    </View>
+                    <View className='flex basis-[40%]'>
+                        {recs}
+                    </View>
+                    <View className='flex flex-row basis-[20%] justify-between items-center'>
+                        <Link href={"./StrengthAssessmentInputs"} className=''>
+                            <View className='bg-ug-dark-green p-2 rounded-lg'>
+                                <Text className=' text-ug-white text-md '>
+                                    Back to Input
+                                </Text>
+                            </View>
+                        </Link>
+                        <Link href={"./AddActivity"} className=''>
+                            <View className='bg-ug-dark-green p-2 rounded-lg'>
+                                <Text className=' text-ug-white text-md'>
+                                    Add Activities
+                                </Text>
+                            </View>
+                        </Link>
+                        <Link href={"./Climbs"} className=''>
+                            <View className='bg-ug-dark-green p-2 rounded-lg'>
+                                <Text className=' text-ug-white text-md '>
+                                    Add Climbs
+                                </Text>
+                            </View>
+                        </Link>
+                    </View>
+                </View>
             </ScreenLayout>
         );
     } else if (climbGrade >= scoreVGrade){ //recommends strength
@@ -142,43 +171,72 @@ export default function Recommendations() {
         if(scoreVGrade <= 4)
         {
             recs =
-            <View>
-                <Text>-Pull Ups</Text>  
-                <Text>-Dead Hang Training</Text>
-                <Text>-Shoulder Shrugs</Text>
-                <Text>-L-sit with Knees Bent</Text>
+            <View className='flex h-full justify-evenly'>
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-Pull Ups</Text>  
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-Dead Hang Training</Text>
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-Shoulder Shrugs</Text>
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-L-sit with Knees Bent</Text>
             </View>
         }
         else if(scoreVGrade <= 9)
         {
             recs =
-            <View>
-                <Text>-Weighted Pull Ups</Text>  
-                <Text>-One Arm Dead Hang</Text>
-                <Text>-Muscle Ups</Text>
-                <Text>-Campus Boarding: 1-4, 1-5, 1-3-5</Text>
-                <Text>-L-sit</Text>
+            <View className='flex h-full justify-evenly'>
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-Weighted Pull Ups</Text>  
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-One Arm Dead Hang</Text>
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-Muscle Ups</Text>
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-Campus Boarding: 1-4, 1-5, 1-3-5</Text>
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-L-sit</Text>
             </View>
         }
         else
         {
             recs =
-            <View>
-                <Text>-Weighted Pull Ups</Text>  
-                <Text>-One Arm Dead Hang</Text> 
-                <Text>-One Arm Pull Ups</Text>
-                <Text>-Muscle Ups</Text>
-                <Text>-Campus Boarding: 1-4-7, 1-5-8, 1-5-9</Text>
-                <Text>-Front Lever</Text>
+            <View className='flex h-full justify-evenly'>
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-Weighted Pull Ups</Text>  
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-One Arm Dead Hang</Text> 
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-One Arm Pull Ups</Text>
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-Muscle Ups</Text>
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-Campus Boarding: 1-4-7, 1-5-8, 1-5-9</Text>
+                <Text className='flex p-2 text-lg bg-ug-light-blue border rounded-lg'>-Front Lever</Text>
             </View>
         }
 
         return (
             <ScreenLayout>
-                <Text className='text-center text-4xl font-bold mt-16 mb-3'>Recommendations</Text>
-                <Text>Since your strength {(climbGrade == scoreVGrade ? "matches" : "is less than")} your max grade, you should focus on getting stronger. You should try...</Text>
-                {recs}
-            </ScreenLayout>
+            <View className='h-full flex flex-col justify-between'>
+                <View className='flex basis-[40%] '>
+                    <Text className='text-center text-ug-light-green underline text-4xl font-bold mt-8 mb-3'>Recommendations</Text>
+                    <Text className='text-center text-ug-white text-2xl'>Since your strength {(climbGrade == scoreVGrade ? "matches" : "is less than")} your max grade, you should focus on getting stronger. You should try...</Text>
+                </View>
+                <View className='flex basis-[40%]'>
+                    {recs}
+                </View>
+                <View className='flex flex-row basis-[20%] justify-between items-center'>
+                    <Link href={"./StrengthAssessmentInputs"} className=''>
+                        <View className='bg-ug-dark-green p-2 rounded-lg'>
+                            <Text className=' text-ug-white text-md '>
+                                Back to Input
+                            </Text>
+                        </View>
+                    </Link>
+                    <Link href={"./AddActivity"} className=''>
+                        <View className='bg-ug-dark-green p-2 rounded-lg'>
+                            <Text className=' text-ug-white text-md'>
+                                Add Activities
+                            </Text>
+                        </View>
+                    </Link>
+                    <Link href={"./Climbs"} className=''>
+                        <View className='bg-ug-dark-green p-2 rounded-lg'>
+                            <Text className=' text-ug-white text-md '>
+                                Add Climbs
+                            </Text>
+                        </View>
+                    </Link>
+                </View>
+            </View>
+        </ScreenLayout>
         );
     } else { //maybe loads but i put it here just incase it exists
         return (

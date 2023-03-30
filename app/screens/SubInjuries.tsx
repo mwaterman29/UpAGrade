@@ -17,26 +17,38 @@ export default function SubInjuries() {
     const linksJSON: SubInjuriesData = 
     {
         'Arm': [
-            {Title: 'TestTitle', Url: "https://www.youtube.com/", id: 'first'},
-            {Title: 'TestTitle2', Url: "https://www.youtube.com/", id: 'second2'}
+            {Title: 'FDP', Url: "https://www.youtube.com/watch?v=ub_ttbKcGvc", id: 'fdp'},
+            {Title: 'Proximal Bicep Pain', Url: "https://youtu.be/CDZxdrG7Na8", id: 'pbp'},
+            {Title: 'Distal Bicep Pain', Url: "https://youtu.be/C9xpB-qlpYw", id: 'dbp'}
         ],
         'Back': [
-            {Title: 'TestTitle2', Url: "https://www.youtube.com/", id: 'second'}
+            {Title: 'Scapular Dyskenisis', Url: "https://youtu.be/s_RlOd6Xu3Y", id: 'sd'},
+            {Title: 'Trap Engagement', Url: "https://youtu.be/-_2_1hOfL00", id: 'te'},
+            {Title: 'How to Pull Up Correctly', Url: "https://youtu.be/8SsgGYOyJBY", id: 'hpuc'},
         ],
         'Shoulder': [
-            {Title: 'TestTitle2', Url: "https://www.youtube.com/", id: 'third'}
+            {Title: 'Shoulder Impingement Syndrome', Url: "https://youtu.be/E4xnKZXynkY", id: 'sis'},
+            {Title: 'Shoulder Warm Up For Injury Prevention', Url: "https://youtu.be/W-N2Vp_7obs", id: 'swuip'},
+            {Title: 'Shoulder Workout Plan', Url: "https://youtu.be/CMU1beXJv1c", id: 'swp'},
         ],
-        'Wrist': [
-            {Title: 'TestTitle2', Url: "https://www.youtube.com/", id: 'fourth'}
+        'Wrist': [            
+            {Title: 'Beginner Wrist Training Plan', Url: "https://youtu.be/03-Le-fMba8", id: 'bwtp'},
+            {Title: 'Advanced Wrist Training Plan', Url: "https://youtu.be/W-N2Vp_7obs", id: 'awtp'},
+            {Title: 'TFCC Injury', Url: "https://www.youtube.com/watch?v=Q0H_HJcM1zQ ", id: 'tfcci'},
         ],
         'Leg': [
-            {Title: 'TestTitle2', Url: "https://www.youtube.com/", id: 'fifth'}
+            {Title: 'Knee Pain', Url: "https://youtu.be/DGlYW2gRjl8", id: 'kp'},
+            {Title: 'Ankle Pain', Url: "https://youtu.be/Ci1E4Enm3_o", id: 'ap'},
+            {Title: 'Hamstring Info', Url: "https://youtu.be/wmeas5-mrFw", id: 'hi'},
         ],
         'Elbow': [
-            {Title: 'TestTitle2', Url: "https://www.youtube.com/", id: 'sixth'}
+            {Title: 'Tennis Elbow', Url: "https://youtu.be/gf4dcg2i2HU", id: 'te'},
+            {Title: 'Golfers Elbow', Url: "https://youtu.be/vaLFC1pG_OI", id: 'ge'},
         ],
         'Hand': [
-            {Title: 'TestTitle2', Url: "https://www.youtube.com/", id: 'fifth'}
+            {Title: 'A2 Pulley', Url: "https://www.youtube.com/watch?v=_AxN5HyBLfM", id: 'a2p'},
+            {Title: 'Lumbricals', Url: "https://www.youtube.com/watch?v=lKuidJ9QTMU", id: 'lumbr'},
+            {Title: 'Trigger Finger Syndrome', Url: "https://www.youtube.com/watch?v=bRgTLZQBSQA", id: 'tfs'},
         ],
     }
 

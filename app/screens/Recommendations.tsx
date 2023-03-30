@@ -140,7 +140,7 @@ export default function Recommendations() {
                         {recs}
                     </View>
                     <View className='flex flex-row basis-[20%] justify-between items-center'>
-                        <Link href={"./StrengthAssessmentInputs"} className=''>
+                        <Link href={"./StrengthAssessmentInput"} className=''>
                             <View className='bg-ug-dark-green p-2 rounded-lg'>
                                 <Text className=' text-ug-white text-md '>
                                     Back to Input
@@ -213,7 +213,7 @@ export default function Recommendations() {
                     {recs}
                 </View>
                 <View className='flex flex-row basis-[20%] justify-between items-center'>
-                    <Link href={"./StrengthAssessmentInputs"} className=''>
+                    <Link href={"./StrengthAssessmentInput"} className=''>
                         <View className='bg-ug-dark-green p-2 rounded-lg'>
                             <Text className=' text-ug-white text-md '>
                                 Back to Input

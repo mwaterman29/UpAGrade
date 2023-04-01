@@ -90,7 +90,7 @@ const WorkoutScreen = () => {
     <ScreenLayout>
         <View className="flex flex-col h-full justify-evenly items-center">
             <Button title="Show Date Picker" onPress={showDatePicker} />
-            <Text>Workout for {currentWorkout.date.toDateString()}</Text>
+            <Text className="text-ug-white underline text-2xl">Workout for {currentWorkout.date.toDateString()}</Text>
             <DateTimePickerModal
                 isVisible={isDatePickerVisible}
                 mode="date"
@@ -111,7 +111,9 @@ const WorkoutScreen = () => {
                 ))}
             </View>
             <TouchableOpacity onPress={saveWorkout}>
-                <Text>Save Workout</Text>
+              <View className="bg-ug-dark-green p-2">
+                <Text className="text-ug-white text-2xl">Save Workout</Text>
+              </View>
             </TouchableOpacity>
             </View>
     </ScreenLayout>

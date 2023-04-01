@@ -62,6 +62,12 @@ const AddWorkout = () => {
           });
         }
       };
+
+    useEffect(() => {
+      const today = new Date();
+      loadWorkout(today);
+    }, []);
+      
   
     useEffect(() => {
       if (givenDate) {

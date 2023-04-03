@@ -78,7 +78,15 @@ const WorkoutScreen = () => {
     });
   };
 
+  //const [init, setInit] = useState(false);
+  useEffect(() => {
+    const today = new Date();
+    loadWorkout(today);
+  }, []);
+  
+
   return (
+    
     <ScreenLayout>
         <View className="flex flex-col h-full justify-evenly items-center">
             <Button title="Show Date Picker" onPress={showDatePicker} />

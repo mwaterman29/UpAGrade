@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
-import React, {useState} from 'react';
-import { Text, View, Button, TextInput } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import { Text, View, Button, TextInput, Keyboard } from 'react-native';
 import { Link, useRouter } from "expo-router";
 import DropDownPicker from 'react-native-dropdown-picker';
 import ScreenLayout from '../components/ScreenLayout';
@@ -54,11 +54,32 @@ export default function TrackClimbs() {
         }
     }
 
+        //Keyboard listening
+        const [isKeyboardVisible, setKeyboardVisible] = useState(false);
+        useEffect(() => {
+           const keyboardDidShowListener = Keyboard.addListener(
+             'keyboardDidShow',
+             () => {
+               setKeyboardVisible(true); // or some other action
+             }
+           );
+           const keyboardDidHideListener = Keyboard.addListener(
+             'keyboardDidHide',
+             () => {
+               setKeyboardVisible(false); // or some other action
+             }
+           );
+       
+           return () => {
+             keyboardDidHideListener.remove();
+             keyboardDidShowListener.remove();
+           };
+         }, []);
 
     return (
         <ScreenLayout>
             <Text className='text-center text-4xl font-bold mt-16 mb-3'>Add Climb</Text>
-            <View className="flex-1 h-full bg-ug-white">
+            <View className="flex-1 rounded h-full bg-ug-white">
                 <DropDownPicker
                         placeholder='Pick A Grade'
                         open={openGrade}
@@ -72,7 +93,7 @@ export default function TrackClimbs() {
                 <TextInput className='h-[100px] text-xl' onChangeText={(change)=>setDescription(change)} placeholder='Enter A Description'/>
                 <TextInput className='text-2xl' onChangeText={(change)=>setLocation(change)} placeholder='Enter A Location'/>
                 <TextInput className='text-2xl' onChangeText={(change)=>setDate(change)} placeholder='Enter A Date'/>
-                <Button color='black' title='Add' onPress={setUpObject}/>
+                {!isKeyboardVisible && <Button color='black' title='Add' onPress={setUpObject}/>}
             </View>
         </ScreenLayout>
     );

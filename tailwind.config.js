@@ -17,7 +17,20 @@ module.exports = {
         'ug-black' : '#0f0e0d',
         'ug-red': '#a63232'
     },
-    extend: {},
+    extend: {
+      animation: {
+        logoColorAlternate: 'logoColorAlternate 4s ease-in-out infinite',
+      },
+      keyframes: {
+        logoColorAlternate: {
+          '0%': { color: '#b6dee4' },
+
+          '50%': { color: '#2fc62d' },
+
+          '100%': { color: '#b6dee4' },
+        },
+      },
+    },
   },
   presets: [nativewind],
 }

@@ -79,7 +79,7 @@ export default function TrackClimbs() {
     return (
         <ScreenLayout>
             <Text className='text-center text-4xl font-bold mt-16 mb-3'>Add Climb</Text>
-            <View className="flex-1 h-full bg-ug-white">
+            <View className="flex-1 rounded h-full bg-ug-white">
                 <DropDownPicker
                         placeholder='Pick A Grade'
                         open={openGrade}

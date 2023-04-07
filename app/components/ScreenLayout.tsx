@@ -41,7 +41,7 @@ const ScreenLayout = ({children}: Props) => {
                     </View>       
                     {
                     !isKeyboardVisible &&
-                    <View className='flex basis-[10%] bg-ug-gray p-2'>
+                    <View className='flex basis-[10%] bg-ug-light-gray p-2'>
                     <Navbar/>
                     </View>  
                     }

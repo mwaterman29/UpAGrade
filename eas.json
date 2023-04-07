@@ -10,15 +10,14 @@
         "resourceClass": "m-medium"
       }
     },
-    "preview": {
-      "distribution": "internal",
+    "production": {
       "ios": {
         "resourceClass": "m-medium"
       }
     },
-    "production": {
-      "ios": {
-        "resourceClass": "m-medium"
+    "preview": {
+      "android": {
+        "buildType": "apk"
       }
     }
   },

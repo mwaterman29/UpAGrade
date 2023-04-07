@@ -9,7 +9,7 @@ export default function App() {
 
   return (
     <View className='bg-ug-light-gray h-full'>
-      <Text className='text-center text-4xl font-bold mt-16 mb-3'>Home</Text>
+      <Text className='text-ug-white text-center text-4xl font-bold mt-16 mb-3 animate-logoColorAlternate'>Dashboard</Text>
       <View className="flex-1 rounded justify-center h-full py-3 bg-ug-light-gray">
         <View className="flex flex-row justify-evenly flex-wrap bg-ug-light-gray">
           <Pressable onPress={() => Router.replace('/screens/TrackWorkouts')}>

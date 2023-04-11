@@ -79,13 +79,6 @@ const AddWorkout = () => {
     return(
         <ScreenLayout>
             <View className ='flex flex-col h-full justify-evenly items-center'>
-                <Button
-                    onPress={() => {
-                        AsyncStorage.clear();
-                    }}
-                    title = "clear str"
-                />
-
                 <Text>Workout for {currentWorkout.date.toDateString()}</Text>
                 <Button title="Show Date Picker" onPress={showDatePicker} />
                 <DateTimePickerModal

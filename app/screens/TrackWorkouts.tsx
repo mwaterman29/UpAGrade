@@ -110,11 +110,25 @@ const WorkoutScreen = () => {
                 
                 ))}
             </View>
-            <TouchableOpacity onPress={saveWorkout}>
+
+            {currentWorkout.activities.length == 0 && 
+            <View className="flex w-full items-center justify-cente">
+              <Text className="text-ug-light-green text-md p-3">You have no workout activities planned for today.</Text>
+              <Link href={'./AddWorkout?givenDate=' + currentWorkout.date.toDateString()}>
+                <View className="bg-ug-dark-green p-2">
+                  <Text className="text-ug-white text-2xl">Go To Add Workout</Text>
+                </View>
+              </Link>
+            </View>}
+            {
+              currentWorkout.activities.length > 0 && 
+              <TouchableOpacity onPress={saveWorkout}>
               <View className="bg-ug-dark-green p-2">
                 <Text className="text-ug-white text-2xl">Save Workout</Text>
               </View>
             </TouchableOpacity>
+            }
+            
             </View>
     </ScreenLayout>
   );

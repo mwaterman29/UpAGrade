@@ -51,8 +51,6 @@ export default function App() {
         </View>
       </View>
 
-
-
       </ImageBackground>
         
       </View>

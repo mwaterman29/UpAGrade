@@ -103,12 +103,6 @@ const AddWorkout = () => {
                         </Text>
                     </View>
                 </Link>
-                <Button
-                    onPress={() => {
-                        AsyncStorage.clear();
-                    }}
-                    title = "Clear Storage (Testing)"
-                />
             </View>
         </ScreenLayout>
     );

@@ -1,18 +1,23 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Text, View, Image, Pressable } from 'react-native';
+import { ImageBackground, StyleSheet, Text, View, Image, Pressable, StyleProp, ViewStyle } from 'react-native';
 import { Link, useRouter } from "expo-router";
 import ScreenLayout from './components/ScreenLayout';
 
 export default function App() {
   const Router = useRouter()
 
+  const image = require('../assets/bg.jpg');
+
   return (
-    <View className='bg-ug-light-gray h-full flex flex-col'>
+    <View className='bg-el-cap h-full flex flex-col'>
       <View className='flex basis-[90%]'>
-      <Text className='text-center text-4xl font-bold mt-16 mb-3'>Home</Text>
-      <View className="flex-1 rounded justify-center h-full py-3 bg-ug-light-gray">
-        <View className="flex flex-row justify-evenly flex-wrap bg-ug-light-gray">
+      <ImageBackground source={image} className='h-full w-full'>
+      <View className='bg-ug-white opacity-50 absolute bottom-0 left-0 w-full h-full'>
+      </View>
+      <Text className='text-center text-4xl font-bold mt-16 mb-3 opacity-100'>Home</Text>
+      <View className="flex-1 rounded justify-center h-full py-3">
+        <View className="flex flex-row justify-evenly flex-wrap">
           <Pressable onPress={() => Router.replace('/screens/TrackWorkouts')}>
             <View className="w-[130px] m-6 rounded-lg justify-center h-[130px] bg-ug-dark-green">
               <Text className='font-bold text-xl text-center text-ug-white'>Workouts</Text>
@@ -45,11 +50,16 @@ export default function App() {
           </Pressable>
         </View>
       </View>
+
+
+
+      </ImageBackground>
+        
       </View>
       <View className='flex basis-[10%]'>
         <Pressable onPress={() => Router.replace('/screens/Information')}>
-            <View className="h-full w-full bg-ug-dark-green">
-              <Text className='font-bold text-xl text-center text-ug-white'>Need help? Click here.</Text>
+            <View className="flex h-full w-full bg-ug-dark-green items-center justify-center">
+              <Text className='flex font-bold text-xl text-center text-ug-white'>Need help? Click here.</Text>
             </View>
           </Pressable>
       </View>
@@ -57,4 +67,6 @@ export default function App() {
       
     </View >
   );
+
 }
+

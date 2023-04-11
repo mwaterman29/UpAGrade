@@ -18,6 +18,10 @@ module.exports = {
         'ug-red': '#a63232'
     },
     extend: {
+      backgroundImage: {
+        'el-cap': "url('/assets/bg.jpg')",
+      },
+
       animation: {
         logoColorAlternate: 'logoColorAlternate 4s ease-in-out infinite',
       },

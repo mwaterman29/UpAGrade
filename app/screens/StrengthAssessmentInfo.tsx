@@ -9,7 +9,7 @@ const StrengthAssessmentInfo = () => {
 
     
     return(
-        <ScreenLayout img={bg}>
+        <ScreenLayout>
             <View className ='flex flex-col h-full justify-evenly items-center'>
                 <Text className="text-4xl text-ug-green bg-ug-light-gray rounded-full p-2 underline decoration-double">
                     Strength Assessment

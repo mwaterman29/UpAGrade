@@ -89,7 +89,7 @@ const NotesScreen = () => {
           <Text className="text-2xl underline text-ug-white">Notes for {date.toDateString()}</Text>
           
           <View className="flex">          
-            <Button title="Show Date Picker" onPress={showDatePicker} />
+            <Button title="Change Date" onPress={showDatePicker} />
             <DateTimePickerModal
               isVisible={isDatePickerVisible}
               mode="date"

@@ -11,8 +11,8 @@ export default function TrackClimbs() {
         I want to sort all of the data first by last added then I want to organize by grade 
         of the climb
     */
-    const [climbData, setClimbData] = useState([])
-    const [removed, setRemoved] = useState(false)
+        const [climbData, setClimbData] = useState([])
+        const [removed, setRemoved] = useState(false)
 
     useEffect(() => {
         storage.getAllDataForKey('climbs')

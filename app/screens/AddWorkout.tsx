@@ -63,6 +63,22 @@ const AddWorkout = () => {
         }
       };
 
+      const saveWorkout = async () => {
+        try {
+          await storage.save({
+            key: 'workouts',
+            id: currentWorkout.date.toDateString(),
+            data: {
+              date: currentWorkout.date,
+              activities: currentWorkout.activities
+            },
+          });
+          console.log('Workout saved successfully!');
+        } catch (err) {
+          console.log('Error saving workout:', err);
+        }
+      };
+
     useEffect(() => {
       const today = new Date();
       loadWorkout(today);
@@ -84,6 +100,7 @@ const AddWorkout = () => {
       if (index > -1) {
         currentWorkout.activities.splice(index, 1);
       }
+      saveWorkout();
       setRemoved(!removed);
 /*
       useEffect(() => {
@@ -94,8 +111,8 @@ const AddWorkout = () => {
     return(
         <ScreenLayout>
             <View className ='flex flex-col h-full justify-evenly items-center'>
-                <Text>Workout for {currentWorkout.date.toDateString()}</Text>
-                <Button title="Show Date Picker" onPress={showDatePicker} />
+                <Text className="text-2xl text-ug-white underline text-center">Add to your workout for {currentWorkout.date.toDateString()}</Text>
+                <Button title="Change Date" onPress={showDatePicker} />
                 <DateTimePickerModal
                     isVisible={isDatePickerVisible}
                     mode="date"
@@ -110,6 +127,10 @@ const AddWorkout = () => {
                       )
                   })}
                 </View>
+
+                {currentWorkout.activities.length == 0 &&
+                <Text className="text-ug-white text-xl text-centered bg-ug-gray p-2 rounded-lg">You have no activities planned for this day. When you add one, they'll show up here.
+                </Text>}
 
                 <Link href={"./AddActivity?givenDate=" + currentWorkout.date.toDateString()}>
                     <View className="bg-ug-dark-green m-2 p-4">

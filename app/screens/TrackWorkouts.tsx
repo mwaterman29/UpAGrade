@@ -89,7 +89,7 @@ const WorkoutScreen = () => {
     
     <ScreenLayout>
         <View className="flex flex-col h-full justify-evenly items-center">
-            <Button title="Show Date Picker" onPress={showDatePicker} />
+            <Button title="Change Datef" onPress={showDatePicker} />
             <Text className="text-ug-white underline text-2xl">Workout for {currentWorkout.date.toDateString()}</Text>
             <DateTimePickerModal
                 isVisible={isDatePickerVisible}
@@ -101,7 +101,7 @@ const WorkoutScreen = () => {
                 {currentWorkout.activities.map((activity, index) => (
                     <View className="outline-2 outline-double" key={index}>
                         <TouchableOpacity onPress={() => toggleActivity(index)} >
-                            <ActivityComponent activity={activity} />
+                            <ActivityComponent activity={activity}/>
                             {activity.completed ? 
                             <Text className="w-full text-md text-ug-green">Completed</Text> : 
                             <Text className="w-full text-md text-ug-light-blue">Not Yet Completed</Text>}
@@ -112,10 +112,10 @@ const WorkoutScreen = () => {
             </View>
 
             {currentWorkout.activities.length == 0 && 
-            <View className="flex w-full items-center justify-cente">
-              <Text className="text-ug-light-green text-md p-3">You have no workout activities planned for today.</Text>
+            <View className="flex w-full items-center justify-center">
+              <Text className="text-ug-white text-xl text-centered bg-ug-gray p-2 mb-4 rounded-lg">You have no workout activities planned for today.</Text>
               <Link href={'./AddWorkout?givenDate=' + currentWorkout.date.toDateString()}>
-                <View className="bg-ug-dark-green p-2">
+                <View className="bg-ug-dark-green p-2 m-2">
                   <Text className="text-ug-white text-2xl">Go To Add Workout</Text>
                 </View>
               </Link>

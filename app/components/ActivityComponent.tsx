@@ -5,7 +5,7 @@ import { Activity } from '../screens/AddActivity';
 
 type Props = {
     activity: Activity
-    removeFunction: Function
+    removeFunction?: Function
 }
 
 const ActivityComponent: React.FC<Props> = ({ activity, removeFunction }) => {
@@ -14,7 +14,8 @@ const ActivityComponent: React.FC<Props> = ({ activity, removeFunction }) => {
 
     function deleteActivity()
     {
-        removeFunction(activity);
+        if(removeFunction)
+            removeFunction(activity);
         setModalVisible(false);
     }
 
@@ -22,7 +23,7 @@ const ActivityComponent: React.FC<Props> = ({ activity, removeFunction }) => {
         if (activity.type == 1) {
             return (
                 
-                <Pressable onLongPress={() => setModalVisible(true)}>
+                <Pressable onLongPress={() => { if(removeFunction) setModalVisible(true)}}>
                     <View className="flex-row items-center bg-ug-gray my-2 h-14 min-h-14 w-full">
                         <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">{activity.num}</Text>
                         <Text className="flex basis-1/6 text-center items-center justify-center h-full">{"X"}</Text>
@@ -33,7 +34,7 @@ const ActivityComponent: React.FC<Props> = ({ activity, removeFunction }) => {
             );
         } else if (activity.type == 2) {
             return (
-                <Pressable onLongPress={() => setModalVisible(true)}>
+                <Pressable onLongPress={() => { if(removeFunction) setModalVisible(true)}}>
                 <View className="flex-row items-center bg-ug-gray my-2 h-14 min-h-14 w-full">
                     {activity.num && <Text className="flex basis-1/3 bg-ug-light-green text-center items-center justify-center h-full">{activity.num}</Text>}
                     <Text className="flex basis-2/3 bg-ug-light-blue text-center items-center justify-center h-full">{activity.desc}</Text>
@@ -42,7 +43,7 @@ const ActivityComponent: React.FC<Props> = ({ activity, removeFunction }) => {
             );
         } else {
             return (
-                <Pressable onLongPress={() => setModalVisible(true)}>
+                <Pressable onLongPress={() => { if(removeFunction) setModalVisible(true)}}>
                     <View className="flex-row items-center bg-ug-gray my-2 h-14 min-h-14 w-full">
                         <Text className="flex w-full bg-ug-light-blue text-center items-center justify-center h-full">{activity.desc}</Text>
                     </View>

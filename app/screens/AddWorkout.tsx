@@ -76,6 +76,21 @@ const AddWorkout = () => {
       }
     }, [givenDate]);
 
+    const [removed, setRemoved] = useState(false);
+
+    function removeActivity(activity : Activity)
+    {
+      const index = currentWorkout.activities.indexOf(activity, 0);
+      if (index > -1) {
+        currentWorkout.activities.splice(index, 1);
+      }
+      setRemoved(!removed);
+/*
+      useEffect(() => {
+        
+      }, [currentWorkout]);*/
+    }
+
     return(
         <ScreenLayout>
             <View className ='flex flex-col h-full justify-evenly items-center'>
@@ -91,7 +106,7 @@ const AddWorkout = () => {
                   {currentWorkout.activities.map((activity) => {
                       //console.log("Hit activity " + activity.desc);
                       return(
-                        <ActivityComponent key={"k_"+activity.desc} activity = {activity} />
+                        <ActivityComponent key={"k_"+activity.desc} activity = {activity} removeFunction = {removeActivity} />
                       )
                   })}
                 </View>

@@ -43,8 +43,11 @@ const AddActivity = () => {
         }
     ]);
 
+    const [screenUpdate, setScreenUpdate] = useState(false);
+
     function onPressRadioButton(radioButtonsArray: RadioButtonProps[]) {
-        setRadioButtons(radioButtonsArray);  
+        setRadioButtons(radioButtonsArray); 
+        setScreenUpdate(!screenUpdate); 
     }
 
     const [num, onChangeNum] = React.useState('');

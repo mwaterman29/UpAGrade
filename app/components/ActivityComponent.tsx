@@ -61,7 +61,7 @@ const ActivityComponent: React.FC<Props> = ({ activity, removeFunction }) => {
         onRequestClose={() => {
           setModalVisible(!modalVisible);
         }}>
-            <View className='bg-ug-light-blue rounded flex mt-[250] items-center self-center p-4 w-[130px]'>
+            <View className='bg-ug-gray rounded flex mt-[250] items-center self-center p-4 border-2 border-ug-black w-[130px]'>
                 <Pressable onPress={deleteActivity}>
                     <Text className='text-3xl font-bold text-ug-red mb-3'>Remove</Text>
                 </Pressable>

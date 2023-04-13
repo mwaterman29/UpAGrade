@@ -95,6 +95,31 @@ const AddActivity = () => {
         return link;
     }
 
+    function isNotEmpty(str: String) {
+        return !(!str || str.length === 0 );
+    }
+
+    function checkFilled()
+    {
+        let selButton = radioButtons.find(rb => rb.selected);
+        if(!selButton)
+            return false;
+        let iType = parseInt(selButton.id);
+
+        switch(iType)
+        {
+            case 1:
+                return (isNotEmpty(num) && isNotEmpty(by) && isNotEmpty(desc));
+            case 2:
+                return (isNotEmpty(num) && isNotEmpty(desc));
+            case 3:
+                return isNotEmpty(desc);
+        }
+
+        //If reached something is wrong
+        return false;
+    }
+
     return(
         <ScreenLayout>
             <View className ='flex flex-col h-full justify-evenly items-center'>
@@ -188,7 +213,17 @@ const AddActivity = () => {
                         </View>
                     )}
                 </View>
-                {!isKeyboardVisible &&(
+
+                {!checkFilled() &&(
+                    <View className="bg-ug-gray m-2 p-4">
+                        <Text className="text-ug-white text-xl text-center">
+                            Fill all fields first
+                        </Text>
+                    </View>
+                )
+                }
+
+                {!isKeyboardVisible && checkFilled() &&(
                 <Link href={getWorkoutLink()}>
                         <View className="bg-ug-dark-green m-2 p-4">
                             <Text className="text-ug-white text-xl text-center">

@@ -8,7 +8,7 @@ import ScreenLayout from '../components/ScreenLayout';
 export default function Injuries() {
     return (
         <ScreenLayout>
-            <Text className='text-center text-4xl font-bold mt-16 mb-3'>Injuries</Text>
+            <Text className='text-center text-4xl font-bold mt-16 mb-3 text-ug-white underline'>Injuries</Text>
             <View className="flex-1 rounded h-full py-3 bg-ug-white">
                 <ScrollView className="flex flex-col h-full py-5 bg-ug-white">
                     <InjuryCard Title={'Arm'}/>

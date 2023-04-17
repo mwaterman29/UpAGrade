@@ -89,7 +89,7 @@ const WorkoutScreen = () => {
     
     <ScreenLayout>
         <View className="flex flex-col h-full justify-evenly items-center">
-            <Button title="Change Datef" onPress={showDatePicker} />
+            <Button title="Change Date" onPress={showDatePicker} />
             <Text className="text-ug-white underline text-2xl">Workout for {currentWorkout.date.toDateString()}</Text>
             <DateTimePickerModal
                 isVisible={isDatePickerVisible}

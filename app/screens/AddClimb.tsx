@@ -83,23 +83,28 @@ export default function TrackClimbs() {
 
     return (
         <ScreenLayout>
-            <Text className='text-center text-4xl font-bold mt-16 mb-3'>Add Climb</Text>
-            <View className="flex-1 rounded h-full bg-ug-white">
-                <DropDownPicker
-                        placeholder='Pick A Grade'
-                        open={openGrade}
-                        value={valueGrade}
-                        items={itemsGrade}
-                        setOpen={setOpenGrade}
-                        setValue={setValueGrade}
-                        setItems={setItemsGrade}
-                        listMode="MODAL"
-                        theme='DARK' />
-                <TextInput className='h-[100px] text-xl' onChangeText={ (change) => setDescription(change) } placeholder='Enter A Description'/>
-                <TextInput className='text-2xl' onChangeText={ (change) => setLocation(change) } placeholder='Enter A Location'/>
-                <TextInput className='text-2xl' onChangeText={ (change) => { if (change.length <= 8) { setDate(change) } } } placeholder='Date: MM-DD-YY'/>
-                {!isKeyboardVisible && <Button color='black' title='Add' onPress={setUpObject}/>}
+            <View className='flex h-full w-full'>
+              <View className='flex basis-1/5 justify-center'>
+                <Text className='text-center text-4xl font-bold text-ug-white underline '>Add Climb</Text>
+              </View>
+              <View className="basis-4/5 flex justify-between">
+                  <DropDownPicker
+                          placeholder='Pick A Grade'
+                          open={openGrade}
+                          value={valueGrade}
+                          items={itemsGrade}
+                          setOpen={setOpenGrade}
+                          setValue={setValueGrade}
+                          setItems={setItemsGrade}
+                          listMode="MODAL"/>
+                  <TextInput className='text-2xl text-center h-1/5 bg-ug-white text-ug-black rounded-md border border-ug-black' onChangeText={ (change) => setDescription(change) } placeholder='Enter A Description'/>
+                  <TextInput className='text-2xl text-center h-1/5 bg-ug-white text-ug-black rounded-md border border-ug-black' onChangeText={ (change) => setLocation(change) } placeholder='Enter A Location'/>
+                  <TextInput className='text-2xl text-center h-1/5 bg-ug-white text-ug-black rounded-md border border-ug-black' onChangeText={ (change) => { if (change.length <= 8) { setDate(change) } } } placeholder='Date: MM-DD-YY'/>
+                  {!isKeyboardVisible && <Button color='black' title='Add' onPress={setUpObject}/>}
+              </View>
             </View>
+
+
         </ScreenLayout>
     );
 }

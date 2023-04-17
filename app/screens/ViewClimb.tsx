@@ -28,7 +28,7 @@ export default function ViewClimb() {
 
     return (
         <ScreenLayout>
-            <Text className='text-center text-4xl font-bold mt-16 mb-3'>View Climb</Text>
+            <Text className='text-center text-4xl font-bold mt-16 mb-3 text-ug-white underline'>Climb Info</Text>
             <View className="flex-1 rounded h-full bg-ug-white">
                 <ScrollView>
                 <Text className="text-center py-4 text-2xl font-bold">Location: {climbInformation.Location}</Text> 

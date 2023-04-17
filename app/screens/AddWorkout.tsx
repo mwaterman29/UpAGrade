@@ -129,7 +129,7 @@ const AddWorkout = () => {
                 </View>
 
                 {currentWorkout.activities.length == 0 &&
-                <Text className="text-ug-white text-xl text-centered bg-ug-gray p-2 rounded-lg">You have no activities planned for this day. When you add one, they'll show up here.
+                <Text className="text-ug-white text-xl text-centered bg-ug-gray p-2 rounded-lg">You have no activities planned for this day. When you add some, they'll show up here.
                 </Text>}
 
                 <Link href={"./AddActivity?givenDate=" + currentWorkout.date.toDateString()}>

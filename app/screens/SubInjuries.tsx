@@ -61,7 +61,7 @@ export default function SubInjuries() {
     //Renders the FlatList of sub-injuries for the specific sub-injury
     return (
         <ScreenLayout>
-            <Text className='text-center text-4xl font-bold mt-16 mb-3'>Sub-injuries</Text>
+            <Text className='text-center text-4xl font-bold mt-16 mb-3 text-ug-white underline'>{Params.SubInjuries?.toString()} Injuries</Text>
             <View className='flex-1 rounded h-full py-3 bg-ug-white'>
                 <FlatList data={Data} renderItem={ ({ item }) => <SubInjuryCard Title={item.Title} Url={item.Url}/>} keyExtractor={item => item.id}/>
             </View>

@@ -97,9 +97,9 @@ export default function TrackClimbs() {
                           setValue={setValueGrade}
                           setItems={setItemsGrade}
                           listMode="MODAL"/>
-                  <TextInput className='text-2xl text-center h-1/5 bg-ug-white text-ug-black rounded-md border border-ug-black' onChangeText={ (change) => setDescription(change) } placeholder='Enter A Description'/>
-                  <TextInput className='text-2xl text-center h-1/5 bg-ug-white text-ug-black rounded-md border border-ug-black' onChangeText={ (change) => setLocation(change) } placeholder='Enter A Location'/>
-                  <TextInput className='text-2xl text-center h-1/5 bg-ug-white text-ug-black rounded-md border border-ug-black' onChangeText={ (change) => { if (change.length <= 8) { setDate(change) } } } placeholder='Date: MM-DD-YY'/>
+                  <TextInput className='text-2xl text-center h-1/5 bg-ug-light-blue text-ug-black rounded-md border border-ug-black' onChangeText={ (change) => setDescription(change) } placeholder='Enter A Description'/>
+                  <TextInput className='text-2xl text-center h-1/5 bg-ug-light-blue text-ug-black rounded-md border border-ug-black' onChangeText={ (change) => setLocation(change) } placeholder='Enter A Location'/>
+                  <TextInput className='text-2xl text-center h-1/5 bg-ug-light-blue text-ug-black rounded-md border border-ug-black' onChangeText={ (change) => { if (change.length <= 8) { setDate(change) } } } placeholder='Date: MM-DD-YY'/>
                   {!isKeyboardVisible && <Button color='black' title='Add' onPress={setUpObject}/>}
               </View>
             </View>

@@ -12,9 +12,9 @@ export default function Injuries() {
     return (
         <ScreenLayout>
             <View className='flex flex-col justify-between items-centered rounded h-full w-full p-3'>
-            <Text className='text-center text-4xl font-bold mt-16 mb-3'>Information</Text>
+            <Text className='text-center text-4xl font-bold mt-16 mb-3 text-ug-white underline'>Information</Text>
             <Text>UpAGrade Version 1.0.0a</Text>
-            <Text>This app has 5 Major Functionalities:</Text>
+            <Text>This app has 6 Major Functionalities:</Text>
             <View>
                 <Text>1. Planning Workouts - You can add workout activities of all different types.</Text>
                 <Text>2. Tracking Workouts - You can review your daily workouts and check off your activities.</Text>

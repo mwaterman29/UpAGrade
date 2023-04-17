@@ -35,9 +35,11 @@ export default function TrackClimbs() {
       const [date, setDate] = useState('')
       const [id, setId] = useState('')
       const Router = useRouter()
+      const dateRegex = /^(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])-[0-9]{2}$/;
 
     function setUpObject(){
         if (description.trim() && location.trim() && date.trim() && valueGrade != null) {
+          if (dateRegex.test(date)) {
             const climbID = uid()
             const climbInfo = {Grade: valueGrade, Description: description, Location: location, Date: date, climbid: climbID}
             //console.log(climbInfo.Grade, climbInfo.Description, climbInfo.Location)
@@ -49,6 +51,9 @@ export default function TrackClimbs() {
             }).then();
             
             Router.replace('/screens/Climbs')
+          } else {
+            alert('Enter a Valid Date')
+          }
         } else {
             alert('Please Fill All Fields')
         }
@@ -90,9 +95,9 @@ export default function TrackClimbs() {
                         setItems={setItemsGrade}
                         listMode="MODAL"
                         theme='DARK' />
-                <TextInput className='h-[100px] text-xl' onChangeText={(change)=>setDescription(change)} placeholder='Enter A Description'/>
-                <TextInput className='text-2xl' onChangeText={(change)=>setLocation(change)} placeholder='Enter A Location'/>
-                <TextInput className='text-2xl' onChangeText={(change)=>setDate(change)} placeholder='Enter A Date'/>
+                <TextInput className='h-[100px] text-xl' onChangeText={ (change) => setDescription(change) } placeholder='Enter A Description'/>
+                <TextInput className='text-2xl' onChangeText={ (change) => setLocation(change) } placeholder='Enter A Location'/>
+                <TextInput className='text-2xl' onChangeText={ (change) => { if (change.length <= 8) { setDate(change) } } } placeholder='Date: MM-DD-YY'/>
                 {!isKeyboardVisible && <Button color='black' title='Add' onPress={setUpObject}/>}
             </View>
         </ScreenLayout>

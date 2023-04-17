@@ -111,19 +111,24 @@ const AddWorkout = () => {
     return(
         <ScreenLayout>
             <View className ='flex flex-col h-full justify-evenly items-center'>
-                <Text className="text-2xl text-ug-white underline text-center">Add to your workout for {currentWorkout.date.toDateString()}</Text>
-                <Button title="Change Date" onPress={showDatePicker} />
-                <DateTimePickerModal
-                    isVisible={isDatePickerVisible}
-                    mode="date"
-                    onConfirm={handleConfirm}
-                    onCancel={hideDatePicker}
-                />
+                <View>
+                  <Text className="text-2xl text-ug-white underline text-center">Add to your workout for {currentWorkout.date.toDateString()}</Text>
+                  <Button title="Change Date" onPress={showDatePicker} />
+                  <DateTimePickerModal
+                      isVisible={isDatePickerVisible}
+                      mode="date"
+                      onConfirm={handleConfirm}
+                      onCancel={hideDatePicker}
+                  />
+                </View>
+                
                 <View>
                   {currentWorkout.activities.map((activity) => {
                       //console.log("Hit activity " + activity.desc);
                       return(
-                        <ActivityComponent key={"k_"+activity.desc} activity = {activity} removeFunction = {removeActivity} />
+                        <View className="my-2" key={"k_"+activity.desc}>
+                          <ActivityComponent  activity = {activity} removeFunction = {removeActivity} />
+                        </View>
                       )
                   })}
                 </View>

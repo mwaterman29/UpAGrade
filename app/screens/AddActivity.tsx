@@ -214,7 +214,7 @@ const AddActivity = () => {
                     )}
                 </View>
 
-                {!checkFilled() &&(
+                {!isKeyboardVisible && !checkFilled() &&(
                     <View className="bg-ug-gray m-2 p-4">
                         <Text className="text-ug-white text-xl text-center">
                             Fill all fields first

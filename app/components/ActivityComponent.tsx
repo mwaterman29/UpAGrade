@@ -24,7 +24,7 @@ const ActivityComponent: React.FC<Props> = ({ activity, removeFunction }) => {
             return (
                 
                 <Pressable onLongPress={() => { if(removeFunction) setModalVisible(true)}}>
-                    <View className="flex-row items-center bg-ug-gray my-2 h-14 min-h-14 w-full">
+                    <View className="flex-row items-center bg-ug-gray h-14 min-h-14 w-full">
                         <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">{activity.num}</Text>
                         <Text className="flex basis-1/6 text-center items-center justify-center h-full">{"X"}</Text>
                         <Text className="flex basis-1/6 bg-ug-light-green text-center items-center justify-center h-full">{activity.by}</Text>
@@ -35,7 +35,7 @@ const ActivityComponent: React.FC<Props> = ({ activity, removeFunction }) => {
         } else if (activity.type == 2) {
             return (
                 <Pressable onLongPress={() => { if(removeFunction) setModalVisible(true)}}>
-                <View className="flex-row items-center bg-ug-gray my-2 h-14 min-h-14 w-full">
+                <View className="flex-row items-center bg-ug-gray h-14 min-h-14 w-full">
                     {activity.num && <Text className="flex basis-1/3 bg-ug-light-green text-center items-center justify-center h-full">{activity.num}</Text>}
                     <Text className="flex basis-2/3 bg-ug-light-blue text-center items-center justify-center h-full">{activity.desc}</Text>
                 </View>
@@ -44,7 +44,7 @@ const ActivityComponent: React.FC<Props> = ({ activity, removeFunction }) => {
         } else {
             return (
                 <Pressable onLongPress={() => { if(removeFunction) setModalVisible(true)}}>
-                    <View className="flex-row items-center bg-ug-gray my-2 h-14 min-h-14 w-full">
+                    <View className="flex-row items-center bg-ug-gray h-14 min-h-14 w-full">
                         <Text className="flex w-full bg-ug-light-blue text-center items-center justify-center h-full">{activity.desc}</Text>
                     </View>
                 </Pressable>
@@ -61,7 +61,7 @@ const ActivityComponent: React.FC<Props> = ({ activity, removeFunction }) => {
         onRequestClose={() => {
           setModalVisible(!modalVisible);
         }}>
-            <View className='bg-ug-gray rounded flex mt-[250] items-center self-center p-4 border-2 border-ug-black w-[130px]'>
+            <View className='bg-ug-gray rounded flex mt-[250] items-center self-center border-2 border-ug-black w-[130px]'>
                 <Pressable onPress={deleteActivity}>
                     <Text className='text-3xl font-bold text-ug-red mb-3'>Remove</Text>
                 </Pressable>

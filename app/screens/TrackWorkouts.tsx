@@ -76,6 +76,7 @@ const WorkoutScreen = () => {
       ...currentWorkout,
       activities: newActivities,
     });
+    saveWorkout();
   };
 
   //const [init, setInit] = useState(false);
@@ -89,23 +90,26 @@ const WorkoutScreen = () => {
     
     <ScreenLayout>
         <View className="flex flex-col h-full justify-evenly items-center">
-            <Button title="Change Date" onPress={showDatePicker} />
-            <Text className="text-ug-white underline text-2xl">Workout for {currentWorkout.date.toDateString()}</Text>
+          <View>
+          <Text className="text-ug-white underline text-2xl">Workout for {currentWorkout.date.toDateString()}</Text>
             <DateTimePickerModal
                 isVisible={isDatePickerVisible}
                 mode="date"
                 onConfirm={handleConfirm}
                 onCancel={hideDatePicker}
             />
+            <Button title="Change Date" onPress={showDatePicker} />
+          </View>
+            
             <View className="flex">
                 {currentWorkout.activities.map((activity, index) => (
-                    <View className="outline-2 outline-double" key={index}>
-                        <TouchableOpacity onPress={() => toggleActivity(index)} >
-                            <ActivityComponent activity={activity}/>
-                            {activity.completed ? 
-                            <Text className="w-full text-md text-ug-green">Completed</Text> : 
-                            <Text className="w-full text-md text-ug-light-blue">Not Yet Completed</Text>}
-                        </TouchableOpacity>
+                    <View className="flex outline-2 outline-double mb-2 border border-ug-black" key={index}>
+                      <ActivityComponent activity={activity}/>
+                      <TouchableOpacity onPress={() => toggleActivity(index)} >
+                          {activity.completed ? 
+                          <Text className="w-full text-md bg-ug-green p-2 text-center text-ug-white">Completed</Text> : 
+                          <Text className="w-full text-md bg-ug-red p-2 text-center text-ug-white">Not Yet Completed</Text>}
+                      </TouchableOpacity>
                     </View>
                 
                 ))}
@@ -120,14 +124,6 @@ const WorkoutScreen = () => {
                 </View>
               </Link>
             </View>}
-            {
-              currentWorkout.activities.length > 0 && 
-              <TouchableOpacity onPress={saveWorkout}>
-              <View className="bg-ug-dark-green p-2">
-                <Text className="text-ug-white text-2xl">Save Workout</Text>
-              </View>
-            </TouchableOpacity>
-            }
             
             </View>
     </ScreenLayout>

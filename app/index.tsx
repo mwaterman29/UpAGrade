@@ -20,7 +20,7 @@ export default function App() {
         <View className="flex flex-row justify-evenly flex-wrap">
           <Pressable onPress={() => Router.replace('/screens/TrackWorkouts')}>
             <View className="w-[130px] m-6 rounded-lg justify-center h-[130px] bg-ug-dark-green">
-              <Text className='font-bold text-xl text-center text-ug-white'>Workouts</Text>
+              <Text className='font-bold text-xl text-center text-ug-white'>Track Workouts</Text>
             </View>
           </Pressable>
           <Pressable onPress={() => Router.replace('/screens/AddWorkout')}>

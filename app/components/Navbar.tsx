@@ -3,7 +3,9 @@ import { Text, View, Image } from 'react-native';
 import { Link } from "expo-router";
 import Svg, { Path } from 'react-native-svg'
 
+// Navbar component
 const Navbar = () => {
+    // The UI for the component that displays the icons for the navbar as a bunch of SVG files
     return(
         <View className = 'flex flex-row h-full bg-ug-light-gray'>
             <Link className='flex-1 mx-3 py-3 bg-ug-light-blue text-center rounded-lg' href="/">

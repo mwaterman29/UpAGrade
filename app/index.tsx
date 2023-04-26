@@ -5,10 +5,11 @@ import { Link, useRouter } from "expo-router";
 import ScreenLayout from './components/ScreenLayout';
 
 export default function App() {
-  const Router = useRouter()
+  const Router = useRouter() //router hook for navigation
 
   const image = require('../assets/bg.jpg');
 
+  //displays all of the UI for the home page in 6 squares to navigate to
   return (
     <View className='bg-el-cap h-full flex flex-col'>
       <View className='flex basis-[90%]'>

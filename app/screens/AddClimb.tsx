@@ -9,8 +9,9 @@ import storage from '../storage';
 
 // The component used to add climbs to the track climbs page
 export default function AddClimbs() { 
-    const [openGrade, setOpenGrade] = useState(false); 
-    const [valueGrade, setValueGrade] = useState(null);
+    const [openGrade, setOpenGrade] = useState(false); // state for modal to decide if its open or not
+    const [valueGrade, setValueGrade] = useState(null); // state for the modal that holds the value
+    // state for the modal that holds all of the choices
     const [itemsGrade, setItemsGrade] = useState([
         {label: 'V0', value: '0'},
         {label: 'V1', value: '1'},
@@ -31,13 +32,16 @@ export default function AddClimbs() {
         {label: 'V16', value: '16'},
         {label: 'V17', value: '17'}
       ]);
-      const [description, setDescription] = useState('')
-      const [location, setLocation] = useState('')
-      const [date, setDate] = useState('')
-      const [id, setId] = useState('')
-      const Router = useRouter()
+      const [description, setDescription] = useState('') // holds the description data
+      const [location, setLocation] = useState('') // holds the location data
+      const [date, setDate] = useState('') // holds the date data
+      const [id, setId] = useState('') // useless but was to hold an id
+      const Router = useRouter() // router hook for navigation
+      //regex for date checking
       const dateRegex = /^([1-9]|0[1-9]|1[0-2])[-/]([1-9]|0[1-9]|[12][0-9]|3[01])[-/]\d{2}$/
 
+    // function that sets up the data structure to be saved to the async memory then it saves
+    // after checking that all fields have been filled out and the date is valid
     function setUpObject(){
         if (description.trim() && location.trim() && date.trim() && valueGrade != null) {
           if (dateRegex.test(date)) {
@@ -59,7 +63,7 @@ export default function AddClimbs() {
         }
     }
 
-        //Keyboard listening
+        //Keyboard listening to fix the keyboard bug
         const [isKeyboardVisible, setKeyboardVisible] = useState(false);
         useEffect(() => {
            const keyboardDidShowListener = Keyboard.addListener(
@@ -81,6 +85,7 @@ export default function AddClimbs() {
            };
          }, []);
 
+    // The UI that as a bunch of input fields for the add climb page and an add button
     return (
         <ScreenLayout>
             <View className='flex h-full w-full'>

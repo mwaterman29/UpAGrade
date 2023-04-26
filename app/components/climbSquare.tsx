@@ -4,6 +4,7 @@ import { Text, View, Button, Pressable, Modal } from 'react-native';
 import { Link, useRouter } from "expo-router";
 import storage from '../storage';
 
+// holds the datatypes for all of the props for typescript 
 type Props = {
     date: string,
     Grade: string,
@@ -11,10 +12,12 @@ type Props = {
     removedFunction: Function
 }
 
+//holds the individual data for a climb in a climb square component
 function ClimbSquare({date, Grade, climbid, removedFunction}: Props) {
-    const router = useRouter();
-    const [modalVisible, setModalVisible] = useState(false);
+    const router = useRouter(); //router for navigation
+    const [modalVisible, setModalVisible] = useState(false); //state for remove modal visibilty
 
+    // removes a climb from the storage
     function deleteClimb(){
         setModalVisible(!modalVisible)
         storage.remove({
@@ -24,6 +27,7 @@ function ClimbSquare({date, Grade, climbid, removedFunction}: Props) {
         removedFunction()
     }
 
+    //Holds the UI for a square that will be listed on the tracking climbs page
     return (
         <>
         <Modal

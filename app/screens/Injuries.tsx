@@ -5,7 +5,10 @@ import { Link } from "expo-router";
 import InjuryCard from '../components/InjuryCard';
 import ScreenLayout from '../components/ScreenLayout';
 
+// A component for listing the injury categories
 export default function Injuries() {
+    // The UI for the injuries page that has all of the categories for the different injuries
+    // it lists the injuries using injury card components
     return (
         <ScreenLayout>
             <Text className='text-center text-4xl font-bold mt-16 mb-3 text-ug-white underline'>Injuries</Text>

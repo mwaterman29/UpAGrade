@@ -6,14 +6,17 @@ import SubInjuryCard from '../components/SubInjuryCard';
 import { PropertyName } from 'typescript';
 import ScreenLayout from '../components/ScreenLayout';
 
+// A component for the subinjury card
 export default function SubInjuries() {
-    const Params = useLocalSearchParams()
-    const router = useRouter()
+    const Params = useLocalSearchParams() // A hook for getting the parameters from the navigation
+    const router = useRouter() // router hook used to navigate
 
+    //interface from typescript for a the data in a subinjury
     interface SubInjuriesData {
         [key: string]: { Title: string, Url: string, id: string }[];
     }
 
+    // The json that holds all of the links for the subinjuries to redirect the user to
     const linksJSON: SubInjuriesData = 
     {
         'Arm': [

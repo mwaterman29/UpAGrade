@@ -7,8 +7,9 @@ import ScreenLayout from '../components/ScreenLayout';
 import uid from '../uid';
 import storage from '../storage';
 
-export default function TrackClimbs() {
-    const [openGrade, setOpenGrade] = useState(false);
+// The component used to add climbs to the track climbs page
+export default function AddClimbs() { 
+    const [openGrade, setOpenGrade] = useState(false); 
     const [valueGrade, setValueGrade] = useState(null);
     const [itemsGrade, setItemsGrade] = useState([
         {label: 'V0', value: '0'},
@@ -42,7 +43,6 @@ export default function TrackClimbs() {
           if (dateRegex.test(date)) {
             const climbID = uid()
             const climbInfo = {Grade: valueGrade, Description: description, Location: location, Date: date, climbid: climbID}
-            //console.log(climbInfo.Grade, climbInfo.Description, climbInfo.Location)
             storage.save({
                 key: 'climbs',
                 id: climbID,

@@ -10,6 +10,11 @@ import { Workout } from "./AddWorkout";
 import storage from '.././storage';
 import ActivityComponent from "../components/ActivityComponent";
 
+/*
+This screen allows for tracking workouts.
+It will render each activity that you have planned, as well as a togle for whether it's completed or not.
+*/
+
 const WorkoutScreen = () => {
   const [currentWorkout, setCurrentWorkout] = useState<Workout>({
     date: new Date(),

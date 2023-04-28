@@ -18,6 +18,14 @@ type Activity = {
 
 export type {Activity};
 
+/*
+
+This screen is how you add a new activity to the workouts.
+You can select the type, and then populate the fields.
+Then, it will redirect to the SubmitActivity endpoint, and add it to the storage.
+
+*/
+
 const AddActivity = () => {
 
     //Radio buttons and options

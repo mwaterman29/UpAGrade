@@ -8,6 +8,14 @@ type Props = {
     removeFunction?: Function
 }
 
+/*
+
+This component renders the content of an activity. 
+There are 3 types of activities:
+    -Type 1 - 3 fields, number by ... [description], ex - 10 by +25lb weighted pullups
+    -Type 2 - 2 fields, number of description, ex - 20 pullups
+    -Type 3 - 1 field, description, ex - Warmup Run 
+*/
 const ActivityComponent: React.FC<Props> = ({ activity, removeFunction }) => {
 
     const [modalVisible, setModalVisible] = useState(false);

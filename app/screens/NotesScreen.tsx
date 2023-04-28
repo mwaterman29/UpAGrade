@@ -11,6 +11,14 @@ import storage from '.././storage';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import ActivityComponent from "../components/ActivityComponent";
 
+/*
+
+This is the journaling screen.
+The user can take notes for each day.
+This way, users do not need another app to record their progress or other thoughts.
+
+*/
+
 const NotesScreen = () => {
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState('');

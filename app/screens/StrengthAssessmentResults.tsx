@@ -3,6 +3,12 @@ import React, {ReactNode, useEffect, useState} from 'react';
 import { Pressable, Text, View } from 'react-native';
 import { Link, useRouter, useSearchParams } from "expo-router";
 
+/*
+This page shows the results for the strength assessment.
+It will tell you what grade you can climb based on how strong you are.
+*/
+
+
 const StrengthAssessmentResults = () => {
 
     const { valueFS, valuePU, valueCS, valueMH} = useSearchParams();

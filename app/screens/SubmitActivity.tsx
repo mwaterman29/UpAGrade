@@ -5,6 +5,8 @@ import storage from '../storage';
 import {Activity} from './AddActivity';
 import {Workout} from './AddWorkout'
 
+//This page is effectively just an API endpoint. It will update the current activity, then save it to storage, then redirect.
+
 const SubmitActivity = () => {
 
     const Router = useRouter();

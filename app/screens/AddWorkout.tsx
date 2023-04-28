@@ -18,6 +18,13 @@ type Workout = {
 
 export type {Workout}
 
+/*
+
+This screen is used to add workouts.
+You can view your activities for the selected date, and remove them.
+
+*/
+
 const AddWorkout = () => {
 
     const { givenDate } = useSearchParams();

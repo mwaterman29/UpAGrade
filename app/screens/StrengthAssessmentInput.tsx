@@ -5,6 +5,13 @@ import { Link } from "expo-router";
 
 import DropDownPicker from "react-native-dropdown-picker";
 
+
+/*
+This page allows input for the Strength Assessment Results
+Once all fields are filled, the submit button will redirect to the results screen and pass the input.
+*/
+
+
 const StrengthAssessmentInput = () => {
 
     const [openFS, setOpenFS] = useState(false);

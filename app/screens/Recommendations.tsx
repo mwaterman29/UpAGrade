@@ -4,6 +4,8 @@ import { Link, useSearchParams } from "expo-router";
 import ScreenLayout from '../components/ScreenLayout';
 import storage from '../storage';
 
+//This screen provides adaptive recommendations based on the strength results and the highest grade in the climbs.
+
 export default function Recommendations() {
     const [climbGrade, setClimbGrade] = useState(0) //Stores largest climbing grade
     const Params = useSearchParams() //to get params

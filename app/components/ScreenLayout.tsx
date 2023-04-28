@@ -11,6 +11,14 @@ type Props = {
     img?: any
 }
   
+/*
+
+This component is a general layout component for rendering a page.
+It renders the contents that are passed as children, and then renders them on most of the screen.
+The bottom 10% is reserved for the nav bar. Additionally, it adds a keyboard listener to update the layout when the keyboard is opened or closed.
+
+*/
+
 const ScreenLayout = ({children, img}: Props) => {
 
     const [isKeyboardVisible, setKeyboardVisible] = useState(false);

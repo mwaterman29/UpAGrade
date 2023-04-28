@@ -8,7 +8,10 @@ import ScreenLayout from '../components/ScreenLayout';
 import storage from '.././storage';
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-export default function Injuries() {
+
+//This page displays some general information about the application.
+
+export default function Information() {
     return (
         <ScreenLayout>
             <View className='flex flex-col justify-between items-centered rounded h-full w-full p-3'>

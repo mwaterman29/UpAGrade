@@ -5,9 +5,12 @@ import { Link } from "expo-router";
 
 const bg = require('../../assets/alex.jpg');
 
-const StrengthAssessmentInfo = () => {
+/*
+This page outlines the requirements needed to take the Strength Assessment Test
+This page then redirects to the input screen.
+*/
 
-    
+const StrengthAssessmentInfo = () => {
     return(
         <ScreenLayout>
             <View className ='flex flex-col h-full justify-evenly items-center'>
